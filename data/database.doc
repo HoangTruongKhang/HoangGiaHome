@@ -48,6 +48,7 @@ CREATE TABLE Room (
     room_name 			VARCHAR(100) NOT NULL UNIQUE,
     image_media_url 	VARCHAR(255), 
     price 				VARCHAR(50) NOT NULL, 
+    area 				INT NOT NULL,
     branch_id 			INT UNSIGNED NOT NULL,
     `description` 		VARCHAR(500) NOT NULL,
     create_at 			DATETIME DEFAULT NOW(),
@@ -55,10 +56,10 @@ CREATE TABLE Room (
     FOREIGN KEY (branch_id) REFERENCES Branch(branch_id)
 );
 -- Add data Room
-INSERT INTO Room (room_name		, image_media_url		, price				, branch_id		, `description`													, 	roomStatus)
-		VALUES 	('Phòng 101'	, 'images/room101.jpg'	, '5,000,000 VND'	, 1				, 'Phòng rộng rãi, thoáng mát, có cửa sổ nhìn ra sân vườn.'		,	'TRONG'),
-				('Phòng 202'	, 'images/room202.jpg'	, '6,500,000 VND'	, 2				, 'Phòng nằm ở vị trí yên tĩnh, đầy đủ tiện nghi.'				,	'DA_DAT'),
-				('Phòng 303'	, 'images/room303.jpg'	, '7,200,000 VND'	, 3				, 'Phòng sang trọng, view thành phố đẹp, có ban công.'			,	'TRONG');
+INSERT INTO Room (room_name		, image_media_url		, price				, area	, branch_id		, `description`													, 	roomStatus)
+		VALUES 	('Phòng 101'	, 'images/room101.jpg'	, '5,000,000 VND'	,	25	, 1				, 'Phòng rộng rãi, thoáng mát, có cửa sổ nhìn ra sân vườn.'		,	'TRONG'),
+				('Phòng 202'	, 'images/room202.jpg'	, '6,500,000 VND'	,	30	, 2				, 'Phòng nằm ở vị trí yên tĩnh, đầy đủ tiện nghi.'				,	'DA_DAT'),
+				('Phòng 303'	, 'images/room303.jpg'	, '7,200,000 VND'	,	20	, 3				, 'Phòng sang trọng, view thành phố đẹp, có ban công.'			,	'TRONG');
 
 
 
@@ -133,11 +134,11 @@ DROP TABLE IF EXISTS `Invoice`;
 CREATE TABLE `Invoice` (
     invoice_id 				INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     invoice_name 			VARCHAR(100) NOT NULL,
-    customer_id 			INT UNSIGNED, 
-    room_id 				INT UNSIGNED,
     branch_id 				INT UNSIGNED,
-    old_electric_number  	INT NOT NULL,
-    new_electric_number 	INT NOT NULL,
+	room_id 				INT UNSIGNED,
+    customer_id 			INT UNSIGNED, 
+    old_electric_number  	INT,
+    new_electric_number 	INT,
     quantity 				INT NOT NULL,
     unit_price 				VARCHAR(50) NOT NULL,
     total_price 			VARCHAR(50) NOT NULL,
@@ -152,7 +153,8 @@ CREATE TABLE `Invoice` (
 INSERT INTO `Invoice` (invoice_name					, customer_id	, room_id	, branch_id	,  old_electric_number, new_electric_number, quantity, unit_price	, total_price	,  note)
 VALUES					('Hóa đơn tháng 11/2024 '	, 1				, 1			, 1			,  120				, 150					, 30	, '3,500 VND'	, '105,000 VND'	,  'Hóa đơn điện tháng 11'),
 						('Hóa đơn tháng 11/2024 '	, 2				, 2			, 2			,  200				, 240					, 40	, '3,500 VND'	, '140,000 VND'	,  'Hóa đơn điện và nước'),
-						('Hóa đơn tháng 11/2024 '	, 3				, 3			, 3			,  300				, 340					, 40	, '3,500 VND'	, '140,000 VND'	,  'Hóa đơn dịch vụ Internet');
+						('Hóa đơn tháng 11/2024 '	, 3				, 3			, 3			,  300				, 340					, 40	, '3,500 VND'	, '140,000 VND'	,  'Hóa đơn dịch vụ Internet'),
+                        ('Hóa đơn tháng 11/2024 '	, 3				, 3			, 3			,  null				, null					, 1		, '150,000 VND'	, '150,000 VND'	,  'Hóa đơn dịch vụ Gửi xe');
 
 
 
@@ -292,14 +294,14 @@ CREATE TABLE IncomeStatistics (
     incomeStatistics_id 		INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, -- ID thống kê
     `month` 					INT NOT NULL, -- Tháng thống kê
     `year` 						INT NOT NULL, -- Năm thống kê
-    total_room_income 			VARCHAR(50) NOT NULL, -- Tổng thu nhập từ việc cho thuê phòng
-    total_service_income 		VARCHAR(50) NOT NULL, -- Tổng thu nhập từ các dịch vụ
-    total_income 				VARCHAR(50) AS (total_room_income + total_service_income) -- Tổng thu nhập (phòng + dịch vụ)
+    total_room_income 			INT, -- Tổng thu nhập từ việc cho thuê phòng
+    total_service_income 		INT , -- Tổng thu nhập từ các dịch vụ
+    total_income 				INT  -- Tổng thu nhập (phòng + dịch vụ)
 );
 -- -- Add data IncomeStatistics
 INSERT INTO IncomeStatistics (`month`	, `year`, total_room_income	, total_service_income)
-VALUES 						(1			, 2024	, '5000000 '	, '9000000 '),
-							(2			, 2024	, '4000000 '	, '2000000 ');
+VALUES 						(1			, 2024	, 5000000 	, 9000000 ),
+							(2			, 2024	, 4000000 	, 2000000 );
 
 
                             
@@ -327,7 +329,7 @@ CREATE TABLE Booking (
 INSERT INTO Booking (salutation	, full_name			, phone_number, room_id	, branch_id	, rentalDuration	, start_date	, end_date		, paymentMethod		, bookingStatus		, notes)
 VALUES				('CHI'		, 'Nguyễn Văn A'	, '0123456789', 1		, 1			, 'TWENTY_FOUR_MONTHS'		, '2024-01-01'	, '2025-01-01'	, 'THANG_TOAN_ONLINE', 'CHO_XU_LY'		, 'Ghi chú 1'),
 					('ANH'		, 'Trần Thị B'		, '0987654321', 2		, 1			, 'TWELVE_MONTHS'		, '2024-02-01'	, '2024-08-01'	, 'THANG_TOAN_ONLINE'	, 'CHO_XU_LY'	, 'Ghi chú 2'),
-					('CHI'		, 'Lê Minh C'		, '0934567890', 3		, 2			, 'SIX_MONTHS'		, '2024-03-01'	, '2025-09-01'	, 'THANG_TOAN_TRUC_TIEP', 'CHO_XU_LY'		, 'Ghi chú 3');
+					('CHI'		, 'Lê Minh C'		, '0934567890', 3		, 2			, 'SIX_MONTHS'		, '2024-03-01'	, '2025-09-01'	, 'THANG_TOAN_TRUC_TIEP', 'HUY'		, 'Ghi chú 3');
 
 
 

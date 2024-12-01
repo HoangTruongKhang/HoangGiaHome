@@ -4,27 +4,6 @@ DROP DATABASE IF EXISTS HoangGia_Home;
 CREATE DATABASE IF NOT EXISTS HoangGia_Home;
 USE HoangGia_Home;
 
--- Tạo bảng `Account`
-DROP TABLE IF EXISTS `Account`;
-CREATE TABLE `Account` (
-	account_id 			INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    username 			VARCHAR(50) NOT NULL UNIQUE,
-    `password` 			VARCHAR(800) NOT NULL,
-    last_name 			NVARCHAR(50) NOT NULL,
-	first_name 			NVARCHAR(50) NOT NULL, 
-    phone_number 		VARCHAR(10) NOT NULL UNIQUE,
-    accountRole 		ENUM('ADMIN', 'USER') DEFAULT 'USER',
-    create_at 			DATETIME DEFAULT NOW()
-);
--- Add data Account
-INSERT INTO `Account` (username		, 	`password`				, 	last_name	, first_name	, phone_number	, accountRole	)
-VALUES					('admin01'	, 'hashed_password_123'		, 'Nguyễn'		, 'An'			, '0987654321'	, 'ADMIN'	),
-						('user01'	, 'hashed_password_456'		, 'Trần'		, 'Bình'		, '0912345678'	, 'USER'	),
-						('user02'	, 'hashed_password_789'		, 'Lê'			, 'Cường'		, '0934567890'	, 'USER'	);
-
-
-
-
 -- Tạo bảng Branch
 DROP TABLE IF EXISTS Branch;
 CREATE TABLE Branch (
@@ -38,6 +17,26 @@ INSERT INTO Branch (branch_name				, address									)
 VALUES				('Chi nhánh Hà Nội'		, '322 Mỹ Đình, Nam Từ Liêm, Hà Nội'		),
 					('Chi nhánh Đà Nẵng'	, '25 Nguyễn Văn Linh, Hải Châu, Đà Nẵng'	),
 					('Chi nhánh Hồ Chí Minh', '75 Lê Lợi, Quận 1, TP Hồ Chí Minh'		);
+                    
+-- Tạo bảng `Account`
+DROP TABLE IF EXISTS `Account`;
+CREATE TABLE `Account` (
+	account_id 			INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    username 			VARCHAR(50) NOT NULL UNIQUE,
+    `password` 			VARCHAR(800) NOT NULL,
+    last_name 			NVARCHAR(50) NOT NULL,
+	first_name 			NVARCHAR(50) NOT NULL, 
+    phone_number 		VARCHAR(10) NOT NULL UNIQUE,
+    accountRole 		ENUM('ADMIN', 'USER') DEFAULT 'USER',
+    branch_id 			INT UNSIGNED NOT NULL,
+    create_at 			DATETIME DEFAULT NOW(),
+     FOREIGN KEY (branch_id) REFERENCES Branch(branch_id)
+);
+-- Add data Account
+INSERT INTO `Account` (username		, 	`password`				, 	last_name	, first_name	, phone_number	, accountRole	, branch_id	)
+VALUES					('admin01'	, 'hashed_password_123'		, 'Nguyễn'		, 'An'			, '0987654321'	, 'ADMIN'		,	1),
+						('user01'	, 'hashed_password_456'		, 'Trần'		, 'Bình'		, '0912345678'	, 'USER'		,	2),
+						('user02'	, 'hashed_password_789'		, 'Lê'			, 'Cường'		, '0934567890'	, 'USER'		,	3);
 
 
 
@@ -47,7 +46,7 @@ CREATE TABLE Room (
     room_id 			INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, -- ID của phòng
     room_name 			VARCHAR(100) NOT NULL UNIQUE,
     image_media_url 	VARCHAR(255), 
-    price 				VARCHAR(50) NOT NULL, 
+    price 				INT NOT NULL, 
     area 				INT NOT NULL,
     branch_id 			INT UNSIGNED NOT NULL,
     `description` 		VARCHAR(500) NOT NULL,
@@ -57,9 +56,9 @@ CREATE TABLE Room (
 );
 -- Add data Room
 INSERT INTO Room (room_name		, image_media_url		, price				, area	, branch_id		, `description`													, 	roomStatus)
-		VALUES 	('Phòng 101'	, 'images/room101.jpg'	, '5,000,000 VND'	,	25	, 1				, 'Phòng rộng rãi, thoáng mát, có cửa sổ nhìn ra sân vườn.'		,	'TRONG'),
-				('Phòng 202'	, 'images/room202.jpg'	, '6,500,000 VND'	,	30	, 2				, 'Phòng nằm ở vị trí yên tĩnh, đầy đủ tiện nghi.'				,	'DA_DAT'),
-				('Phòng 303'	, 'images/room303.jpg'	, '7,200,000 VND'	,	20	, 3				, 'Phòng sang trọng, view thành phố đẹp, có ban công.'			,	'TRONG');
+		VALUES 	('Phòng 101'	, 'images/room101.jpg'	, 1000000	,	40	, 1				, 'Phòng rộng rãi, thoáng mát, có cửa sổ nhìn ra sân vườn.'		,	'TRONG'),
+				('Phòng 202'	, 'images/room202.jpg'	, 5000000	,	20	, 2				, 'Phòng nằm ở vị trí yên tĩnh, đầy đủ tiện nghi.'				,	'DA_DAT'),
+				('Phòng 303'	, 'images/room303.jpg'	, 10000000	,	5	, 3				, 'Phòng sang trọng, view thành phố đẹp, có ban công.'			,	'TRONG');
 
 
 
@@ -151,10 +150,10 @@ CREATE TABLE `Invoice` (
 );
 -- Add data Invoice
 INSERT INTO `Invoice` (invoice_name					, customer_id	, room_id	, branch_id	,  old_electric_number, new_electric_number, quantity, unit_price	, total_price	,  note)
-VALUES					('Hóa đơn tháng 11/2024 '	, 1				, 1			, 1			,  120				, 150					, 30	, '3,500 VND'	, '105,000 VND'	,  'Hóa đơn điện tháng 11'),
+VALUES					('Hóa đơn tháng 9/2024 '	, 1				, 1			, 1			,  120				, 150					, 30	, '3,500 VND'	, '105,000 VND'	,  'Hóa đơn điện tháng 11'),
 						('Hóa đơn tháng 11/2024 '	, 2				, 2			, 2			,  200				, 240					, 40	, '3,500 VND'	, '140,000 VND'	,  'Hóa đơn điện và nước'),
-						('Hóa đơn tháng 11/2024 '	, 3				, 3			, 3			,  300				, 340					, 40	, '3,500 VND'	, '140,000 VND'	,  'Hóa đơn dịch vụ Internet'),
-                        ('Hóa đơn tháng 11/2024 '	, 3				, 3			, 3			,  null				, null					, 1		, '150,000 VND'	, '150,000 VND'	,  'Hóa đơn dịch vụ Gửi xe');
+						('Hóa đơn tháng 8/2024 '	, 3				, 3			, 3			,  300				, 340					, 40	, '3,500 VND'	, '140,000 VND'	,  'Hóa đơn dịch vụ Internet'),
+                        ('Hóa đơn tháng 4/2024 '	, 3				, 3			, 3			,  null				, null					, 1		, '150,000 VND'	, '150,000 VND'	,  'Hóa đơn dịch vụ Gửi xe');
 
 
 
@@ -196,10 +195,10 @@ CREATE TABLE Contract (
     FOREIGN KEY (room_id) REFERENCES Room(room_id) 
 );
 -- Add data Contract
-INSERT INTO Contract (contract_name			, customer_id	, room_id	, contractDuration	, start_date	, end_date		, rent_price		, room_deposit		, contractStatus		, note)
-VALUES				('Hợp đồng thuê phòng '	, 1				, 1			, 'SIX_MONTHS'		, '2024-11-01'	, '2025-10-31'	, '5,000,000 VND'	, '10,000,000 VND'	, 'ACTIVE', 'Hợp đồng phòng 101'),
-					('Hợp đồng thuê phòng '	, 2				, 2			, 'TWELVE_MONTHS'			, '2024-11-15'	, '2025-05-14'	, '4,000,000 VND'	, '8,000,000 VND'	, 'ACTIVE', 'Hợp đồng phòng 202'),
-					('Hợp đồng thuê phòng '	, 3				, 3			, 'SIX_MONTHS'		, '2024-10-01'	, '2026-03-31'	, '6,000,000 VND'	, '12,000,000 VND'	, 'ACTIVE', 'Hợp đồng phòng 303');
+INSERT INTO Contract (contract_name					, customer_id	, room_id	, contractDuration	, start_date	, end_date		, rent_price		, room_deposit		, contractStatus		, note)
+VALUES				('Hợp đồng thuê phòng tháng 1 '	, 1				, 1			, 'SIX_MONTHS'		, '2024-11-01'	, '2025-10-31'	, '5,000,000 VND'	, '10,000,000 VND'	, 'ACTIVE', 'Hợp đồng phòng 101'),
+					('Hợp đồng thuê phòng tháng 2'	, 2				, 2			, 'TWELVE_MONTHS'			, '2024-11-15'	, '2025-05-14'	, '4,000,000 VND'	, '8,000,000 VND'	, 'ACTIVE', 'Hợp đồng phòng 202'),
+					('Hợp đồng thuê phòng tháng 3'	, 3				, 3			, 'SIX_MONTHS'		, '2024-10-01'	, '2026-03-31'	, '6,000,000 VND'	, '12,000,000 VND'	, 'ACTIVE', 'Hợp đồng phòng 303');
 
 
  

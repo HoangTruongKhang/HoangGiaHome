@@ -245,6 +245,230 @@ h2 {
     transition: background-color 0.3s;
 }
 
+/*////////////////////////////////////////*/
+.add-account-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    /* Mặc định ẩn */
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal-content {
+    background-color: #fff;
+    width: 40%;
+    max-width: 600px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.3s ease-out;
+    position: relative;
+}
+
+.modal-content h2 {
+    color: #009205;
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.modal-content form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.modal-content form input,
+.modal-content form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.modal-content .modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.modal-content .close-button,
+.modal-content .save-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.modal-content .close-button {
+    background-color: #f44336;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.modal-content .close-button:hover {
+    background-color: #d32f2f;
+}
+
+.modal-content .save-button {
+    background-color: #009205;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.modal-content .save-button:hover {
+    background-color: #006b04;
+}
+
+/* Hiệu ứng hiển thị */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/*---------- cập nhật*/
+/* Modal for updating account */
+/* Modal Cập nhật tài khoản */
+#updateAccountModal {
+    display: none;
+    /* Ẩn modal mặc định */
+    position: fixed;
+    /* Vị trí cố định */
+    z-index: 1;
+    /* Đặt phía trên cùng */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    /* Nếu cần, thêm cuộn */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Màu nền mờ */
+    padding-top: 60px;
+    /* Khoảng cách từ trên xuống */
+}
+
+/* Nội dung modal */
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Tiêu đề modal */
+.modal-content h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Đóng modal */
+.close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Các label cho form */
+.modal-content label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+/* Các input của form */
+.modal-content input[type="text"],
+.modal-content input[type="tel"],
+.modal-content select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.modal-content input[type="text"]:focus,
+.modal-content input[type="tel"]:focus,
+.modal-content select:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+/* Các button trong modal */
+.modal-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.save-button,
+.close-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.save-button {
+    background-color: #4CAF50;
+    color: #fff;
+}
+
+.save-button:hover {
+    background-color: #45a049;
+}
+
+.close-button {
+    background-color: #f44336;
+    color: #fff;
+}
+
+.close-button:hover {
+    background-color: #e53935;
+}
+
+
+
+
+
+
+
+
+
 .account-list {
     display: flex;
     flex-wrap: wrap;

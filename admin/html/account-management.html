@@ -70,12 +70,98 @@
         <div class="add-account">
             <h2>Danh Sách Tài khoản</h2>
             <button class="add-account-button">+ Thêm tài khoản</button>
+            <div class="add-account-modal" id="addAccountModal">
+                <div class="modal-content">
+                    <h2>Thêm mới tài khoản</h2>
+                    <form id="addAccountForm">
+                        <label for="username">Tên đăng nhập</label>
+                        <input type="text" id="username" name="username" required>
+
+                        <label for="last-name">Họ</label>
+                        <input type="text" id="last-name" name="last-name" required>
+
+                        <label for="first-name">Tên</label>
+                        <input type="text" id="first-name" name="first-name" required>
+
+                        <label for="full-name">Họ và tên</label>
+                        <input type="text" id="full-name" name="full-name" required>
+
+                        <label for="phone-number">Số điện thoại</label>
+                        <input type="tel" id="phone-number" name="phone-number" required pattern="[0-9]{10}"
+                            title="Số điện thoại phải có 10 chữ số.">
+
+                        <label for="role">Vai trò</label>
+                        <select id="role" name="role" required>
+                            <option value="USER" selected>USER</option>
+                            <option value="ADMIN">ADMIN</option>
+                        </select>
+
+                        <label for="branch">Chi nhánh</label>
+                        <select id="branch" name="branch" required>
+                            <option value="">Chọn chi nhánh</option>
+                            <option value="tp_hanoi">TP. Hà Nội</option>
+                            <option value="tp_hcm">TP. Hồ Chí Minh</option>
+                            <option value="tp_danang">TP. Đà Nẵng</option>
+                        </select>
+
+                        <div class="modal-buttons">
+                            <button type="button" class="close-button" onclick="closeModal()">Thoát</button>
+                            <button type="submit" class="save-button">Lưu</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- Cập nhật tài khoản Modal -->
+            <!-- Modal Cập nhật tài khoản -->
+            <div id="updateAccountModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeUpdateModal()">&times;</span>
+                    <h2>Cập nhật tài khoản</h2>
+                    <form id="updateAccountForm">
+                        <label for="update-username">Tên đăng nhập</label>
+                        <input type="text" id="update-username" name="username" required>
+
+                        <label for="update-last-name">Họ</label>
+                        <input type="text" id="update-last-name" name="last-name" required>
+
+                        <label for="update-first-name">Tên</label>
+                        <input type="text" id="update-first-name" name="first-name" required>
+
+                        <label for="update-phone-number">Số điện thoại</label>
+                        <input type="text" id="update-phone-number" name="phone-number">
+
+                        <label for="update-branch">Chi nhánh</label>
+                        <select id="update-branch" name="branch" required>
+                            <option value="">Chọn chi nhánh</option>
+                            <option value="tp_hanoi">TP. Hà Nội</option>
+                            <option value="tp_hcm">TP. Hồ Chí Minh</option>
+                            <option value="tp_danang">TP. Đà Nẵng</option>
+                        </select>
+
+
+                        <label for="update-role">Vai trò</label>
+                        <select id="update-role" name="role" required>
+                            <option value="USER">Người dùng</option>
+                            <option value="ADMIN">Quản trị viên</option>
+                        </select>
+
+                        <div class="modal-buttons">
+                            <button type="button" class="close-button" onclick="closeUpdateModal()">Thoát</button>
+                            <button type="submit" class="save-button">Cập nhật</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+
         </div>
         <div class="account-list">
             <table class="account-table">
                 <thead>
                     <tr>
                         <th>Mã tài khoản</th>
+                        <th>Chi nhánh</th>
                         <th>Tên đăng nhập</th>
                         <th>Họ</th>
                         <th>Tên</th>
@@ -88,6 +174,7 @@
                 <tbody>
                     <tr>
                         <td>TK001</td>
+                        <td>TP.Hà Nội</td>
                         <td>nguyenvana</td>
                         <td>Nguyễn</td>
                         <td>Văn A</td>

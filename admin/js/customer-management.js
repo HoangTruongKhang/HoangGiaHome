@@ -12,3 +12,22 @@ menuLinks.forEach(link => {
         link.classList.remove('active'); // Loại bỏ lớp "active" cho các mục còn lại
     }
 });
+
+// Hiển thị form modal
+document.querySelector('.add-customer-button').addEventListener('click', () => {
+    document.getElementById('addAccountModal').style.display = 'flex';
+});
+
+// Đóng form modal
+function closeModal() {
+    document.getElementById('addAccountModal').style.display = 'none';
+}
+
+// Xử lý form submit
+document.getElementById('addAccountForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData);
+    console.log('Dữ liệu gửi đi:', data);
+    closeModal();
+});

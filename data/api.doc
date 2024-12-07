@@ -1,60 +1,79 @@
+
+get all: b7: 2h17
+get by id: b7: trước 2h17
+thêm( post) b9: 0.10
+update; b9: 0.15
+
+
+search username: b8: 0.15 - 0.44
+lọc từ a đến b: b8: 1.1 - 1.28
+
+search. lọc từ bảng cha kèm bảng con: 2.10 - b8 tiếp min - max: date, year, month hết b8
+
+Account List
+Department PAGE
+
+form >> 
+
+
+0.43.44 - account
+1.12 vừa thêm chi nhánh vừa thêm phòng
+
 PAGE:
 	- ACCOUNT:
 		- get all accounts: 	http://localhost:8080/api/v1/accounts
 		- get account by id: 	http://localhost:8080/api/v1/accounts/1
 		- get search; 			http://localhost:8080/api/v1/accounts?search=admin01
-		- ADD:
-		- Update:
+		- ADD:					http://localhost:8080/api/v1/accounts
+		- Update:				http://localhost:8080/api/v1/accounts/4
 		- Delete:
+		- Đổi Pass:
 	- ROOM:
 		- get all rooms:		http://localhost:8080/api/v1/rooms
 		- get room by id:		http://localhost:8080/api/v1/rooms/1
 		- get search:			http://localhost:8080/api/v1/rooms?search=
 		- lọc trạng thái giá:	http://localhost:8080/api/v1/rooms?minPrice=1000000&maxPrice=5000000
 		- Lọc diện tích: 		http://localhost:8080/api/v1/rooms?minArea=10&maxArea=26
-		- ADD:
-		- Update:
+		- ADD:					http://localhost:8080/api/v1/rooms
+		- Update:				http://localhost:8080/api/v1/rooms/4
 		- Delete:
 		
 	- Customer:
 		- get all Customers:	http://localhost:8080/api/v1/customers
 		- get Customer by id:	http://localhost:8080/api/v1/customers/1
 		- get search:			http://localhost:8080/api/v1/customers?search=
-		- ADD:
-		- Update:
+		- ADD:					http://localhost:8080/api/v1/customers
+		- Update:				http://localhost:8080/api/v1/customers/4
 		- Delete:
 		
 	- Service:
 		- get all Services:		http://localhost:8080/api/v1/services
 		- get Service by id:	http://localhost:8080/api/v1/services/1
 		- get search:			http://localhost:8080/api/v1/services?search=
-		- ADD:
-		- Update:
+		- ADD:					http://localhost:8080/api/v1/services
+		- Update:				http://localhost:8080/api/v1/services/4
 		- Delete:
-
-
+		
 	- Invoice:
 		- get all Invoices:		http://localhost:8080/api/v1/invoices
 		- get Invoice by id:	http://localhost:8080/api/v1/invoices/1
 		- get search:			http://localhost:8080/api/v1/invoices?search=
-		- ADD:
-		- Update:
+		- ADD:					http://localhost:8080/api/v1/invoices
+		- Update:				http://localhost:8080/api/v1/invoices/1
 		- Delete:
-
-
+		
 	- IncomeStatistics:
 		- get all IncomeStatistics:		http://localhost:8080/api/v1/incomestatistics
 		- get IncomeStatistics by id:	http://localhost:8080/api/v1/incomestatistics/1
-	
-
+		
+		
 	- Booking:
 		- get all Bookings:		http://localhost:8080/api/v1/bookings
 		- get Booking by id:	http://localhost:8080/api/v1/bookings/3
 		- get search:			http://localhost:8080/api/v1/bookings?search=
-		- ADD:
-		- Update:
+		- ADD:					http://localhost:8080/api/v1/bookings
+		- Update:				http://localhost:8080/api/v1/bookings/4
 		- Delete:
-
 LIST
 	- BRANCH:
 		- get all branch:			http://localhost:8080/api/v1/branch
@@ -63,16 +82,12 @@ LIST
 		- ADD:
 		- Update:
 		- Delete:
-
 		
 	- CustomerService:
 		- get all CustomerServices:		http://localhost:8080/api/v1/customerservices
 		- get CustomerService by id:	http://localhost:8080/api/v1/customerservices/2
 		- get search:					 http://localhost:8080/api/v1/customerservices?search=
-		- ADD:
-		- Update:
-		- Delete:
-
+		
 		
 	- InvoiceService:
 		- get all InvoiceServices:		http://localhost:8080/api/v1/invoiceServices
@@ -81,7 +96,6 @@ LIST
 		- ADD:
 		- Update:
 		- Delete:
-
 		
 		
 	- Contract:
@@ -107,21 +121,31 @@ LIST
 		- ADD:
 		- Update:
 		- Delete:
-
-
+		
 	- Feedback:
 		- get all Feedbacks:	http://localhost:8080/api/v1/feedbacks	
 		- get Feedback by id:	http://localhost:8080/api/v1/feedbacks/2
 		- get search:			http://localhost:8080/api/v1/feedbacks?search=
-		- ADD:
-		- Update:
+		- Phản hồi:
 		- Delete:
-
-
+		
 	- Reply:
 		- get all Replys:		http://localhost:8080/api/v1/replys
 		- get Reply by id:		http://localhost:8080/api/v1/replys/1
 		- get search:			http://localhost:8080/api/v1/replys?search=
-		- ADD:
-		- Update:
 		- Delete:
+		
+	- CustomerRoom:
+		- get all Replys:		http://localhost:8080/api/v1/customerroom
+		- get Reply by id:		http://localhost:8080/api/v1/customerroom/1
+		- get search:			
+		
+	- CustomerBranch:
+		- get all Replys:		http://localhost:8080/api/v1/customerbranchs
+		- get Reply by id:		http://localhost:8080/api/v1/customerbranchs/1
+		- get search:			
+		
+
+
+
+

@@ -13,10 +13,10 @@ CREATE TABLE Branch (
     create_at 		DATETIME DEFAULT NOW()
 );
 -- Add data Branch
-INSERT INTO Branch (branch_name				, address									)
-VALUES				('Chi nhánh Hà Nội'		, '322 Mỹ Đình, Nam Từ Liêm, Hà Nội'		),
-					('Chi nhánh Đà Nẵng'	, '25 Nguyễn Văn Linh, Hải Châu, Đà Nẵng'	),
-					('Chi nhánh Hồ Chí Minh', '75 Lê Lợi, Quận 1, TP Hồ Chí Minh'		);
+INSERT INTO Branch (branch_name		,	 address									)
+VALUES				('Hà Nội'		, '322 Mỹ Đình, Nam Từ Liêm, Hà Nội'		),
+					('Đà Nẵng'		, '25 Nguyễn Văn Linh, Hải Châu, Đà Nẵng'	),
+					('Hồ Chí Minh'	, '75 Lê Lợi, Quận 1, TP Hồ Chí Minh'		);
                     
 -- Tạo bảng `Account`
 DROP TABLE IF EXISTS `Account`;
@@ -51,17 +51,37 @@ CREATE TABLE Room (
     branch_id 			INT UNSIGNED NOT NULL,
     `description` 		VARCHAR(500) NOT NULL,
     create_at 			DATETIME DEFAULT NOW(),
-    roomStatus 			ENUM ('TRONG', 'DA_DAT'),
+    roomStatus 			ENUM ('TRONG', 'DA_DAT') DEFAULT 'TRONG',
     FOREIGN KEY (branch_id) REFERENCES Branch(branch_id)
 );
 -- Add data Room
-INSERT INTO Room (room_name		, image_media_url		, price				, area	, branch_id		, `description`													, 	roomStatus)
+INSERT INTO Room (room_name		, image_media_url		, price		, area	, branch_id		, `description`													, 	roomStatus)
 		VALUES 	('Phòng 101'	, 'images/room101.jpg'	, 1000000	,	40	, 1				, 'Phòng rộng rãi, thoáng mát, có cửa sổ nhìn ra sân vườn.'		,	'TRONG'),
 				('Phòng 202'	, 'images/room202.jpg'	, 5000000	,	20	, 2				, 'Phòng nằm ở vị trí yên tĩnh, đầy đủ tiện nghi.'				,	'DA_DAT'),
 				('Phòng 303'	, 'images/room303.jpg'	, 10000000	,	5	, 3				, 'Phòng sang trọng, view thành phố đẹp, có ban công.'			,	'TRONG');
 
 
-
+-- create table: Customer
+-- DROP TABLE IF EXISTS Customer;
+-- CREATE TABLE Customer (
+-- 	customer_id 		INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+--    	full_name			NVARCHAR(50) NOT NULL, 
+--     cmnd 				VARCHAR(12) NOT NULL UNIQUE, 
+--     phone_number 		VARCHAR(10) NOT NULL UNIQUE, 
+--     email 				VARCHAR(50), 
+--     birth_date 			DATE, 
+--     address 			VARCHAR(100) NOT NULL, 
+--     JoinDate           	DATE, 
+--     create_at 			DATETIME DEFAULT NOW()
+-- );
+-- -- Add data Customer
+-- INSERT INTO Customer (full_name			, cmnd			, phone_number, email					, birth_date	, address									, JoinDate )
+-- VALUES				( 'Nguyễn Văn A'	, '123456789012', '0987654321', 'nguyenvana@gmail.com'	, '1995-05-12 '	, '322 Mỹ Đình, Nam Từ Liêm, Hà Nội'		,'2024-11-01'),
+-- 					( 'Trần Thị B'		, '987654321098', '0912345678', 'tranthib@gmail.com'	, '1992-03-10'	, '25 Nguyễn Văn Linh, Hải Châu, Đà Nẵng'	,'2024-11-01'),
+-- 					('Lê Văn C'		, '456789123456', '0934567890', 'levanc@gmail.com'		, '1990-08-20'	, '75 Lê Lợi, Quận 1, TP Hồ Chí Minh'		,'2024-11-01');
+--                     
+                    
+                    
 DROP TABLE IF EXISTS Customer;
 CREATE TABLE Customer (
 	customer_id 		INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
@@ -85,26 +105,55 @@ VALUES				(1			, 1			, 'Nguyễn Văn A'	, '123456789012', '0987654321', 'nguyen
 					(3			, 3			, 'Lê Văn C'		, '456789123456', '0934567890', 'levanc@gmail.com'		, '1990-08-20'	, '75 Lê Lợi, Quận 1, TP Hồ Chí Minh'		,'2024-11-01');
 
 
+-- create table: CustomerBranch
+-- DROP TABLE IF EXISTS CustomerBranch;
+-- CREATE TABLE CustomerBranch (
+--     customerBranch_id 	INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+--     customer_id 		INT UNSIGNED NOT NULL,
+--     branch_id 			INT UNSIGNED NOT NULL,
+--     registerDate        DATE,
+--     FOREIGN KEY (customer_id) REFERENCES Customer(customer_id),
+--     FOREIGN KEY (branch_id) REFERENCES Branch(branch_id)
+-- );
+-- -- Add data CustomerBranch
+-- INSERT INTO CustomerBranch (customer_id	, branch_id	, registerDate) 
+-- VALUES						(1			, 1			, '2023-10-01'),
+-- 							(2			, 2			, '2023-09-15'),
+-- 							(3			, 3			, '2023-11-05');
 
 
-
-
+-- create table: CustomerRoom
+-- DROP TABLE IF EXISTS CustomerRoom;
+-- CREATE TABLE CustomerRoom (
+--     customerRoom_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+--     customer_id 	INT UNSIGNED NOT NULL,
+--     room_id 		INT UNSIGNED NOT NULL,
+--     start_date 			DATE NOT NULL, 
+--     end_date 			DATE NOT NULL, 
+--     FOREIGN KEY (customer_id) REFERENCES Customer(customer_id),
+--     FOREIGN KEY (room_id) REFERENCES Room(room_id)
+-- );
+-- -- Add data CustomerRoom
+-- INSERT INTO CustomerRoom (customer_id	, room_id	, start_date	, end_date) 
+-- VALUES						(1			, 1			, '2023-10-01'	, '2024-09-30'),
+-- 							(2			, 2			, '2023-09-15'	, '2024-09-14'),
+-- 							(3			, 3			, '2023-11-05'	, '2024-10-31');
 
 -- create table:Service
 DROP TABLE IF EXISTS `Service`;
 CREATE TABLE `Service` (
     service_id 			INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     service_name 		VARCHAR(100) NOT NULL, 
-    price 				VARCHAR(50) NOT NULL,
+    price 				INT NOT NULL,
     quantity 			INT NOT NULL,
     unit 				NVARCHAR(50) NOT NULL,
     create_at 			DATETIME DEFAULT NOW()
 );
 -- Add data Service
-INSERT INTO `Service` (service_name		, price			, quantity	, unit		)
-VALUES				('Dịch vụ vệ sinh'	, '50,000 VND'	, 1			, 'lần'		),
-					('Nước uống'		, '10,000 VND'	, 10		, 'chai'	),
-					('Internet'			, '200,000 VND'	, 1			, 'tháng'	);
+INSERT INTO `Service` (service_name		, price		, quantity	, unit		)
+VALUES				('Dịch vụ vệ sinh'	, 50000 	, 1			, 'Lần'		),
+					('Nước uống'		, 10000 	, 1			, 'Bình'	),
+					('Internet'			, 200000 	, 1			, 'Tháng'	);
 
 
 
@@ -117,7 +166,7 @@ CREATE TABLE CustomerService (
     service_id          INT UNSIGNED,
     registerDate        DATE,
     FOREIGN KEY (customer_id) REFERENCES Customer(customer_id),
-    FOREIGN KEY (service_id) REFERENCES Service(service_id)
+    FOREIGN KEY (service_id) REFERENCES `Service`(service_id)
 );
 -- Add data CustomerService
 INSERT INTO CustomerService (customer_id, service_id, registerDate) 
@@ -135,45 +184,45 @@ CREATE TABLE `Invoice` (
     invoice_name 			VARCHAR(100) NOT NULL,
     branch_id 				INT UNSIGNED,
 	room_id 				INT UNSIGNED,
-    customer_id 			INT UNSIGNED, 
+    customer_id 			INT UNSIGNED,
+    service_id 				INT UNSIGNED, 
     old_electric_number  	INT,
     new_electric_number 	INT,
-    quantity 				INT NOT NULL,
-    unit_price 				VARCHAR(50) NOT NULL,
-    total_price 			VARCHAR(50) NOT NULL,
+    quantity 				INT,
+--     unit_price 				INT,
+    total_price 			INT,
 	create_at 				DATETIME DEFAULT NOW(),
     note 					VARCHAR(255),
     FOREIGN KEY (customer_id) REFERENCES Customer(customer_id), 
     FOREIGN KEY (room_id) REFERENCES Room(room_id),
-    FOREIGN KEY (branch_id) REFERENCES Branch(branch_id)
+    FOREIGN KEY (branch_id) REFERENCES Branch(branch_id),
+    FOREIGN KEY (service_id) REFERENCES `Service`(service_id)
 
 );
 -- Add data Invoice
-INSERT INTO `Invoice` (invoice_name					, customer_id	, room_id	, branch_id	,  old_electric_number, new_electric_number, quantity, unit_price	, total_price	,  note)
-VALUES					('Hóa đơn tháng 9/2024 '	, 1				, 1			, 1			,  120				, 150					, 30	, '3,500 VND'	, '105,000 VND'	,  'Hóa đơn điện tháng 11'),
-						('Hóa đơn tháng 11/2024 '	, 2				, 2			, 2			,  200				, 240					, 40	, '3,500 VND'	, '140,000 VND'	,  'Hóa đơn điện và nước'),
-						('Hóa đơn tháng 8/2024 '	, 3				, 3			, 3			,  300				, 340					, 40	, '3,500 VND'	, '140,000 VND'	,  'Hóa đơn dịch vụ Internet'),
-                        ('Hóa đơn tháng 4/2024 '	, 3				, 3			, 3			,  null				, null					, 1		, '150,000 VND'	, '150,000 VND'	,  'Hóa đơn dịch vụ Gửi xe');
+INSERT INTO `Invoice` (invoice_name					, customer_id	, room_id	, branch_id	,service_id	,  old_electric_number, new_electric_number	, quantity		, total_price	,  note)
+VALUES					('Hóa đơn tháng 9/2024 '	, 1				, 1			, 1			, 1			,  120				, 150					, 30			, 105000 		,  'Hóa đơn điện tháng 11'),
+						('Hóa đơn tháng 9/2024 '	, 2				, 2			, 2			, 2			,  NULL				, NULL					, 40				, 140000 		,  'Hóa đơn dịch vụ Internet'),
+                        ('Hóa đơn tháng 9/2024 '	, 3				, 3			, 3			, 3			,  null				, null					, 1					,150000 		,  'Hóa đơn dịch vụ Gửi xe');
+
 
 
 
 
 -- create table:InvoiceService
-DROP TABLE IF EXISTS `InvoiceService`;
-CREATE TABLE `InvoiceService` (
-	InvoiceService_id	INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    invoice_id 			INT UNSIGNED NOT NULL, 
-    service_id 			INT UNSIGNED NOT NULL, 
-    FOREIGN KEY (invoice_id) REFERENCES `Invoice`(invoice_id), 
-    FOREIGN KEY (service_id) REFERENCES `Service`(service_id)
-);
+-- DROP TABLE IF EXISTS `InvoiceService`;
+-- CREATE TABLE `InvoiceService` (
+-- 	InvoiceService_id	INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+--     invoice_id 			INT UNSIGNED NOT NULL, 
+--     service_id 			INT UNSIGNED NOT NULL, 
+--     FOREIGN KEY (invoice_id) REFERENCES `Invoice`(invoice_id), 
+--     FOREIGN KEY (service_id) REFERENCES `Service`(service_id)
+-- );
 -- Add data InvoiceService
-INSERT INTO `InvoiceService` (invoice_id, service_id)
-VALUES						(1			, 1), 
-							(1			, 2), 
-							(2			, 1);  
-
-
+-- INSERT INTO `InvoiceService` (invoice_id, service_id)
+-- VALUES						(1			, 1), 
+-- 							(1			, 2), 
+-- 							(2			, 1);  
 
 
 -- create table: 
@@ -186,8 +235,8 @@ CREATE TABLE Contract (
     contractDuration 	ENUM ('SIX_MONTHS', 'EIGHT_MONTHS', 'TWELVE_MONTHS', 'EIGHTEEN_MONTHS') DEFAULT 'SIX_MONTHS',
     start_date 			DATE NOT NULL, 
     end_date 			DATE NOT NULL, 
-    rent_price 			VARCHAR(50) NOT NULL,
-    room_deposit 		VARCHAR(50) NOT NULL,
+    rent_price 			INT NOT NULL,
+    room_deposit 		INT NOT NULL,
     contractStatus		ENUM('ACTIVE', 'COMPLETED', 'CANCELLED') DEFAULT 'ACTIVE',
     note 				VARCHAR(255),
     create_at 			DATETIME DEFAULT NOW(), 
@@ -195,10 +244,10 @@ CREATE TABLE Contract (
     FOREIGN KEY (room_id) REFERENCES Room(room_id) 
 );
 -- Add data Contract
-INSERT INTO Contract (contract_name					, customer_id	, room_id	, contractDuration	, start_date	, end_date		, rent_price		, room_deposit		, contractStatus		, note)
-VALUES				('Hợp đồng thuê phòng tháng 1 '	, 1				, 1			, 'SIX_MONTHS'		, '2024-11-01'	, '2025-10-31'	, '5,000,000 VND'	, '10,000,000 VND'	, 'ACTIVE', 'Hợp đồng phòng 101'),
-					('Hợp đồng thuê phòng tháng 2'	, 2				, 2			, 'TWELVE_MONTHS'			, '2024-11-15'	, '2025-05-14'	, '4,000,000 VND'	, '8,000,000 VND'	, 'ACTIVE', 'Hợp đồng phòng 202'),
-					('Hợp đồng thuê phòng tháng 3'	, 3				, 3			, 'SIX_MONTHS'		, '2024-10-01'	, '2026-03-31'	, '6,000,000 VND'	, '12,000,000 VND'	, 'ACTIVE', 'Hợp đồng phòng 303');
+INSERT INTO Contract (contract_name					, customer_id	, room_id	, contractDuration	, start_date	, end_date		, rent_price, room_deposit, contractStatus	, note)
+VALUES				('Hợp đồng thuê phòng tháng 1 '	, 1				, 1			, 'SIX_MONTHS'		, '2024-11-01'	, '2025-10-31'	, 5000000	, 10000000	, 'ACTIVE', 'Hợp đồng phòng 101'),
+					('Hợp đồng thuê phòng tháng 2'	, 2				, 2			, 'TWELVE_MONTHS'	, '2024-11-15'	, '2025-05-14'	, 400000 	, 8000000 	, 'ACTIVE', 'Hợp đồng phòng 202'),
+					('Hợp đồng thuê phòng tháng 3'	, 3				, 3			, 'SIX_MONTHS'		, '2024-10-01'	, '2026-03-31'	, 6000000	, 12000000 	, 'ACTIVE', 'Hợp đồng phòng 303');
 
 
  
@@ -325,10 +374,11 @@ CREATE TABLE Booking (
     FOREIGN KEY (branch_id) REFERENCES Branch(branch_id) ON DELETE CASCADE
 );
 -- Add data Booking
-INSERT INTO Booking (salutation	, full_name			, phone_number, room_id	, branch_id	, rentalDuration	, start_date	, end_date		, paymentMethod		, bookingStatus		, notes)
-VALUES				('CHI'		, 'Nguyễn Văn A'	, '0123456789', 1		, 1			, 'TWENTY_FOUR_MONTHS'		, '2024-01-01'	, '2025-01-01'	, 'THANG_TOAN_ONLINE', 'CHO_XU_LY'		, 'Ghi chú 1'),
-					('ANH'		, 'Trần Thị B'		, '0987654321', 2		, 1			, 'TWELVE_MONTHS'		, '2024-02-01'	, '2024-08-01'	, 'THANG_TOAN_ONLINE'	, 'CHO_XU_LY'	, 'Ghi chú 2'),
-					('CHI'		, 'Lê Minh C'		, '0934567890', 3		, 2			, 'SIX_MONTHS'		, '2024-03-01'	, '2025-09-01'	, 'THANG_TOAN_TRUC_TIEP', 'HUY'		, 'Ghi chú 3');
+INSERT INTO Booking (salutation	, full_name			, phone_number, room_id	, branch_id	, rentalDuration		, start_date	, end_date		, paymentMethod			, bookingStatus		, notes)
+VALUES				('CHI'		, 'Nguyễn Văn A'	, '0123456789', 1		, 1			, 'TWENTY_FOUR_MONTHS'	, '2024-01-01'	, '2025-01-01'	, 'THANG_TOAN_ONLINE'	, 'CHO_XU_LY'		, 'Ghi chú 1'),
+					('ANH'		, 'Trần Thị B'		, '0987654321', 2		, 1			, 'TWELVE_MONTHS'		, '2024-02-01'	, '2024-08-01'	, 'THANG_TOAN_ONLINE'	, 'CHO_XU_LY'		, 'Ghi chú 2'),
+					('CHI'		, 'Lê Minh C'		, '0934567890', 3		, 2			, 'SIX_MONTHS'			, '2024-03-01'	, '2025-09-01'	, 'THANG_TOAN_TRUC_TIEP', 'HUY'				, 'Ghi chú 3');
+
 
 
 

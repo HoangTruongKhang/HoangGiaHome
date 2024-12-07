@@ -1,24 +1,3 @@
-
-get all: b7: 2h17
-get by id: b7: trước 2h17
-thêm( post) b9: 0.10
-update; b9: 0.15
-
-
-search username: b8: 0.15 - 0.44
-lọc từ a đến b: b8: 1.1 - 1.28
-
-search. lọc từ bảng cha kèm bảng con: 2.10 - b8 tiếp min - max: date, year, month hết b8
-
-Account List
-Department PAGE
-
-form >> 
-
-
-0.43.44 - account
-1.12 vừa thêm chi nhánh vừa thêm phòng
-
 PAGE:
 	- ACCOUNT:
 		- get all accounts: 	http://localhost:8080/api/v1/accounts
@@ -79,8 +58,8 @@ LIST
 		- get all branch:			http://localhost:8080/api/v1/branch
 		- get branch by id:			http://localhost:8080/api/v1/branch/1
 		- get search:			 	http://localhost:8080/api/v1/branch?search=
-		- ADD:
-		- Update:
+		- ADD:						http://localhost:8080/api/v1/branch
+		- Update:					http://localhost:8080/api/v1/branch/4
 		- Delete:
 		
 	- CustomerService:
@@ -88,64 +67,40 @@ LIST
 		- get CustomerService by id:	http://localhost:8080/api/v1/customerservices/2
 		- get search:					 http://localhost:8080/api/v1/customerservices?search=
 		
-		
-	- InvoiceService:
-		- get all InvoiceServices:		http://localhost:8080/api/v1/invoiceServices
-		- get InvoiceService by id:		http://localhost:8080/api/v1/invoiceServices/2
-		- get search:					http://localhost:8080/api/v1/invoiceServices?search=
-		- ADD:
-		- Update:
-		- Delete:
-		
-		
 	- Contract:
 		- get all Contracts:			http://localhost:8080/api/v1/contracts	
 		- get Contract by id:			http://localhost:8080/api/v1/contracts/2
 		- get search:					http://localhost:8080/api/v1/contracts?search=
-		- ADD:
-		- Update:
+		- ADD:							http://localhost:8080/api/v1/contracts
+		- Update:						http://localhost:8080/api/v1/contracts/4
 		- Delete:
 		
 	- News:
 		- get all News:		http://localhost:8080/api/v1/news
 		- get News by id:	http://localhost:8080/api/v1/news/1
 		- get search:		http://localhost:8080/api/v1/news?search=
-		- ADD:
-		- Update:
+		- ADD:				http://localhost:8080/api/v1/news
+		- Update:			http://localhost:8080/api/v1/news/4
 		- Delete:
 		
 	- Vehicle:
 		- get all Vehicles:		http://localhost:8080/api/v1/vehicles	
 		- get Vehicle by id:	http://localhost:8080/api/v1/vehicles/1
 		- get search:			http://localhost:8080/api/v1/vehicles?search=
-		- ADD:
-		- Update:
+		- ADD:					http://localhost:8080/api/v1/vehicles
+		- Update:				http://localhost:8080/api/v1/vehicles/1
 		- Delete:
 		
 	- Feedback:
-		- get all Feedbacks:	http://localhost:8080/api/v1/feedbacks	
-		- get Feedback by id:	http://localhost:8080/api/v1/feedbacks/2
-		- get search:			http://localhost:8080/api/v1/feedbacks?search=
-		- Phản hồi:
+		- get all Feedbacks:			http://localhost:8080/api/v1/feedbacks	
+		- get Feedback by id:			http://localhost:8080/api/v1/feedbacks/2
+		- get search:					http://localhost:8080/api/v1/feedbacks?search=
+		- ADD feedbacks giao diện User(home - bạn cần hỗ trợ ?): http://localhost:8080/api/v1/feedbacks  
 		- Delete:
 		
 	- Reply:
 		- get all Replys:		http://localhost:8080/api/v1/replys
 		- get Reply by id:		http://localhost:8080/api/v1/replys/1
 		- get search:			http://localhost:8080/api/v1/replys?search=
+		- Button Phản hồi ở Feedback và lưu vào Reply:http://localhost:8080/api/v1/replys
 		- Delete:
-		
-	- CustomerRoom:
-		- get all Replys:		http://localhost:8080/api/v1/customerroom
-		- get Reply by id:		http://localhost:8080/api/v1/customerroom/1
-		- get search:			
-		
-	- CustomerBranch:
-		- get all Replys:		http://localhost:8080/api/v1/customerbranchs
-		- get Reply by id:		http://localhost:8080/api/v1/customerbranchs/1
-		- get search:			
-		
-
-
-
-

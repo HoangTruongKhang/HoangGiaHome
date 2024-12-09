@@ -2,14 +2,14 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/reset.css">
-    <link rel="stylesheet" href="../css/service-management.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/service-management.css" />
     <script src="../js/service-management.js" defer></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
     <title>Admin</title>
 </head>
 
@@ -62,10 +62,12 @@
             </div>
             <div class="search-input-container">
                 <input type="text" id="search-id" placeholder="Tìm kiếm..." required class="search-input"
-                    list="search-suggestions">
+                    list="search-suggestions" />
                 <span class="clear-icon" onclick="clearSearch()">&#x2715;</span>
             </div>
-            <button class="search-button" onclick="searchFunction()">Tìm Kiếm</button>
+            <button class="search-button" onclick="searchFunction()">
+                Tìm Kiếm
+            </button>
         </div>
         <div class="add-service">
             <h2>Danh Sách Dịch Vụ</h2>
@@ -84,38 +86,63 @@
                         <th>Thao tác</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>S01</td>
-                        <td>Dịch vụ dọn phòng</td>
-                        <td>100,000 VNĐ</td>
-                        <td>50</td>
-                        <td>Buổi</td>
-                        <td>01/01/2024</td>
-                        <td>
-                            <button class="edit-btn">Sửa</button>
-                            <button class="delete-btn">Xóa</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>S02</td>
-                        <td>Dịch vụ giặt là</td>
-                        <td>30,000 VNĐ</td>
-                        <td>100</td>
-                        <td>Cái</td>
-                        <td>01/01/2024</td>
-                        <td>
-                            <button class="edit-btn">Sửa</button>
-                            <button class="delete-btn">Xóa</button>
-                        </td>
-                    </tr>
-                    <!-- Các dịch vụ khác -->
-                </tbody>
-            </table>
+        </div>
+        <div class="add-service">
+            <div class="add-service-modal" id="addServiceModal">
+                <div class="modal-content">
+                    <h2>Thêm mới dịch vụ</h2>
+                    <form id="addServiceForm">
+                        <label for="serviceName">Tên dịch vụ</label>
+                        <input type="text" id="serviceName" name="serviceName" required />
+
+                        <label for="price">Giá</label>
+                        <input type="text" id="price" name="price" required />
+
+                        <label for="quantity">Số lượng</label>
+                        <input type="text" id="quantity" name="quantity" required />
+
+                        <label for="unit">Đơn vị</label>
+                        <input type="text" id="unit" name="unit" required />
+
+                        <div class="modal-buttons">
+                            <button type="button" class="close-button" onclick="closeBranchModal()">
+                                Đóng
+                            </button>
+                            <button type="submit" class="save-button">Lưu</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
 
+        <div class="update-service">
+            <div class="update-service-modal" id="updateServiceModal">
+                <div class="modal-content">
+                    <h2>Cập nhật dịch vụ</h2>
+                    <form id="updateSeviceForm">
+                        <label for="update-serviceName">Tên dịch vụ</label>
+                        <input type="text" id="update-serviceName" name="update-serviceName" required />
 
-    </div>
+                        <label for="update-price">Giá</label>
+                        <input type="text" id="update-price" name="update-price" required />
+
+                        <label for="update-quantity">Số lượng</label>
+                        <input type="text" id="update-quantity" name="update-quantity" required />
+
+                        <label for="update-unit">Đơn vị</label>
+                        <input type="text" id="update-unit" name="update-unit" required />
+
+                        <div class="modal-buttons">
+                            <button type="button" class="close-button" onclick="closeUpdateBranchModal()">
+                                Đóng
+                            </button>
+                            <button type="submit" class="save-button">Lưu</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="notification" class="notification hidden"></div>
 </body>
 
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>

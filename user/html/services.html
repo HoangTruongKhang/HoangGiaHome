@@ -129,24 +129,12 @@
         <h2>Đăng ký dịch vụ</h2>
         <form class="registration-form">
             <!-- Thông tin cá nhân -->
-            <label for="branch">Chi nhánh:</label>
-            <select id="branch" name="branch" required>
-                <option value="branch-1">Hà Nội</option>
-                <option value="branch-2">Đà Nẵng</option>
-                <option value="branch-3">TP.Hồ Chí Minh</option>
-            </select>
 
-            <label for="room-address">Địa chỉ:</label>
-            <input type="text" id="room-address" name="room-address" required>
-
-            <label for="room-number">Tên Phòng:</label>
-            <input type="text" id="room-number" name="room-number" required>
+            <label for="customer-id">Mã khách hàng:</label>
+            <input type="text" id="customer-id" name="customer-id" required>
 
             <label for="full-name">Họ và tên:</label>
             <input type="text" id="full-name" name="full-name" required>
-
-            <label for="phone-number">Số điện thoại:</label>
-            <input type="tel" id="phone-number" name="phone-number" required>
 
             <label for="internet-service">Dịch vụ Internet:</label>
             <select id="internet-service" name="internet-service">
@@ -196,21 +184,33 @@
 
             <h2>Thông tin về phương tiện:</h2>
 
-            <label for="vehicle-type">Loại xe:</label>
-            <select id="vehicle-type" name="vehicle-type">
+            <label for="vehicle-name">Tên xe:</label>
+            <select id="vehicle-name" name="vehicle-name">
                 <option value="motorcycle">Xe máy</option>
                 <option value="electric-motorcycle">Xe máy điện</option>
                 <option value="electric-bike">Xe đạp điện</option>
                 <option value="bicycle">Xe đạp</option>
             </select>
 
-            <label for="vehicle-owner">Tên chủ xe:</label>
+
+            <label for="vehicle-owner">Tên chủ sở hữu:</label>
             <input type="text" id="vehicle-owner" name="vehicle-owner" required>
+
+            <label for="vehicle-type">Loại xe:</label>
+            <select id="vehicle-type" name="vehicle-type">
+                <option value="CC_0">0</option>
+                <option value="CC_50">CC_50</option>
+                <option value="CC_110">CC_110</option>
+                <option value="CC_125">CC_125</option>
+                <option value="CC_150">CC_150</option>
+                <option value="CC_160">CC_160</option>
+            </select>
+
 
             <label for="vehicle-license">Biển số xe:</label>
             <input type="text" id="vehicle-license" name="vehicle-license" required>
 
-            <label for="ownership">Mối quan hệ:</label>
+            <label for="ownership">Mối quan hệ với chủ sở hữu:</label>
             <select id="ownership" name="ownership" required>
                 <option value="owner">Chính chủ</option>
                 <option value="transfer">Sang nhượng</option>

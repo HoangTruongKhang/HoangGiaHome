@@ -69,10 +69,759 @@
         </div>
         <div class="add-invoices">
             <h2>Danh Sách Hóa Đơn</h2>
-            <button class="add-invoices-button">+ Thêm hóa đơn</button>
+            <button class="add-invoices-button" onclick="openModal()">+ Thêm hóa đơn</button>
         </div>
-        <div class="invoices-list">
+        <!-- Modal Thêm Hóa Đơn -->
+        <div id="addInvoiceModal" class="modal">
+            <div class="modal-content">
+                <h2>Thêm Hóa Đơn</h2>
+                <form id="addInvoiceForm">
+                    <!-- Hóa đơn phòng -->
+                    <div class="invoice-section">
+                        <h3>Hóa Đơn Phòng</h3>
+                        <div class="form-group">
+                            <label for="InvoiceService">Mã Dịch Vụ</label>
+                            <input type="text" id="roomInvoiceName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="brancId">Mã Chi Nhánh</label>
+                            <input type="text" id="brancId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomId">Mã Phòng</label>
+                            <input type="text" id="roomId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="CustomerId">Mã Khách</label>
+                            <input type="text" id="CustomerId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomOldIndex">Chỉ Số Cũ</label>
+                            <input type="text" id="roomOldIndex" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomNewIndex">Chỉ Số Mới</label>
+                            <input type="text" id="roomNewIndex" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomQuantity">Số Lượng</label>
+                            <input type="text" id="roomQuantity" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomUnitPrice">Đơn Giá</label>
+                            <input type="text" id="roomUnitPrice" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomTotal">Tổng Tiền</label>
+                            <input type="text" id="roomTotal" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomNote">Note</label>
+                            <input type="text" id="roomNote">
+                        </div>
+                    </div>
+                    <!-- các hóa đơn khác tương tự hóa đơn phòng -->
+                    <!-- Hóa đơn Điện -->
+                    <div class="invoice-section">
+                        <h3>Hóa Đơn Điện</h3>
+                        <div class="form-group">
+                            <label for="InvoiceService">Mã Dịch Vụ</label>
+                            <input type="text" id="roomInvoiceName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="brancId">Mã Chi Nhánh</label>
+                            <input type="text" id="brancId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomId">Mã Phòng</label>
+                            <input type="text" id="roomId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="CustomerId">Mã Khách</label>
+                            <input type="text" id="CustomerId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomOldIndex">Chỉ Số Cũ</label>
+                            <input type="text" id="roomOldIndex" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomNewIndex">Chỉ Số Mới</label>
+                            <input type="text" id="roomNewIndex" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomQuantity">Số Lượng</label>
+                            <input type="text" id="roomQuantity" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomUnitPrice">Đơn Giá</label>
+                            <input type="text" id="roomUnitPrice" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomTotal">Tổng Tiền</label>
+                            <input type="text" id="roomTotal" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomNote">Note</label>
+                            <input type="text" id="roomNote">
+                        </div>
+                    </div>
 
+                    <!-- Hóa Đơn Nước -->
+                    <div class="invoice-section">
+                        <h3>Hóa Đơn Nước</h3>
+                        <div class="form-group">
+                            <label for="InvoiceService">Mã Dịch Vụ</label>
+                            <input type="text" id="roomInvoiceName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="brancId">Mã Chi Nhánh</label>
+                            <input type="text" id="brancId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomId">Mã Phòng</label>
+                            <input type="text" id="roomId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="CustomerId">Mã Khách</label>
+                            <input type="text" id="CustomerId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomOldIndex">Chỉ Số Cũ</label>
+                            <input type="text" id="roomOldIndex" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomNewIndex">Chỉ Số Mới</label>
+                            <input type="text" id="roomNewIndex" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomQuantity">Số Lượng</label>
+                            <input type="text" id="roomQuantity" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomUnitPrice">Đơn Giá</label>
+                            <input type="text" id="roomUnitPrice" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomTotal">Tổng Tiền</label>
+                            <input type="text" id="roomTotal" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomNote">Note</label>
+                            <input type="text" id="roomNote">
+                        </div>
+                    </div>
+
+                    <!-- Hóa Đơn Internet -->
+                    <div class="invoice-section">
+                        <h3>Hóa Đơn Internet</h3>
+                        <div class="form-group">
+                            <label for="InvoiceService">Mã Dịch Vụ</label>
+                            <input type="text" id="roomInvoiceName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="brancId">Mã Chi Nhánh</label>
+                            <input type="text" id="brancId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomId">Mã Phòng</label>
+                            <input type="text" id="roomId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="CustomerId">Mã Khách</label>
+                            <input type="text" id="CustomerId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomOldIndex">Chỉ Số Cũ</label>
+                            <input type="text" id="roomOldIndex" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomNewIndex">Chỉ Số Mới</label>
+                            <input type="text" id="roomNewIndex" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomQuantity">Số Lượng</label>
+                            <input type="text" id="roomQuantity" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomUnitPrice">Đơn Giá</label>
+                            <input type="text" id="roomUnitPrice" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomTotal">Tổng Tiền</label>
+                            <input type="text" id="roomTotal" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomNote">Note</label>
+                            <input type="text" id="roomNote">
+                        </div>
+                    </div>
+
+                    <!-- Hóa Đơn Gửi xe -->
+                    <div class="invoice-section">
+                        <h3>Hóa Đơn Gửi xe</h3>
+                        <div class="form-group">
+                            <label for="InvoiceService">Mã Dịch Vụ</label>
+                            <input type="text" id="roomInvoiceName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="brancId">Mã Chi Nhánh</label>
+                            <input type="text" id="brancId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomId">Mã Phòng</label>
+                            <input type="text" id="roomId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="CustomerId">Mã Khách</label>
+                            <input type="text" id="CustomerId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomOldIndex">Chỉ Số Cũ</label>
+                            <input type="text" id="roomOldIndex" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomNewIndex">Chỉ Số Mới</label>
+                            <input type="text" id="roomNewIndex" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomQuantity">Số Lượng</label>
+                            <input type="text" id="roomQuantity" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomUnitPrice">Đơn Giá</label>
+                            <input type="text" id="roomUnitPrice" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomTotal">Tổng Tiền</label>
+                            <input type="text" id="roomTotal" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomNote">Note</label>
+                            <input type="text" id="roomNote">
+                        </div>
+                    </div>
+
+                    <!-- Hóa Đơn Rác -->
+                    <div class="invoice-section">
+                        <h3>Hóa Đơn Rác</h3>
+                        <div class="form-group">
+                            <label for="InvoiceService">Mã Dịch Vụ</label>
+                            <input type="text" id="roomInvoiceName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="brancId">Mã Chi Nhánh</label>
+                            <input type="text" id="brancId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomId">Mã Phòng</label>
+                            <input type="text" id="roomId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="CustomerId">Mã Khách</label>
+                            <input type="text" id="CustomerId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomOldIndex">Chỉ Số Cũ</label>
+                            <input type="text" id="roomOldIndex" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomNewIndex">Chỉ Số Mới</label>
+                            <input type="text" id="roomNewIndex" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomQuantity">Số Lượng</label>
+                            <input type="text" id="roomQuantity" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomUnitPrice">Đơn Giá</label>
+                            <input type="text" id="roomUnitPrice" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomTotal">Tổng Tiền</label>
+                            <input type="text" id="roomTotal" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomNote">Note</label>
+                            <input type="text" id="roomNote">
+                        </div>
+                    </div>
+
+                    <!-- Hóa Đơn Máy Giặt -->
+                    <div class="invoice-section">
+                        <h3>Hóa Đơn Máy Giặt</h3>
+                        <div class="form-group">
+                            <label for="InvoiceService">Mã Dịch Vụ</label>
+                            <input type="text" id="roomInvoiceName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="brancId">Mã Chi Nhánh</label>
+                            <input type="text" id="brancId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomId">Mã Phòng</label>
+                            <input type="text" id="roomId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="CustomerId">Mã Khách</label>
+                            <input type="text" id="CustomerId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomOldIndex">Chỉ Số Cũ</label>
+                            <input type="text" id="roomOldIndex" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomNewIndex">Chỉ Số Mới</label>
+                            <input type="text" id="roomNewIndex" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomQuantity">Số Lượng</label>
+                            <input type="text" id="roomQuantity" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomUnitPrice">Đơn Giá</label>
+                            <input type="text" id="roomUnitPrice" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomTotal">Tổng Tiền</label>
+                            <input type="text" id="roomTotal" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomNote">Note</label>
+                            <input type="text" id="roomNote">
+                        </div>
+                    </div>
+
+                    <!-- Hóa Đơn Bảo trì thiết bị -->
+                    <div class="invoice-section">
+                        <h3>Hóa Đơn Bảo trì thiết bị</h3>
+                        <div class="form-group">
+                            <label for="InvoiceService">Mã Dịch Vụ</label>
+                            <input type="text" id="roomInvoiceName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="brancId">Mã Chi Nhánh</label>
+                            <input type="text" id="brancId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomId">Mã Phòng</label>
+                            <input type="text" id="roomId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="CustomerId">Mã Khách</label>
+                            <input type="text" id="CustomerId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomOldIndex">Chỉ Số Cũ</label>
+                            <input type="text" id="roomOldIndex" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomNewIndex">Chỉ Số Mới</label>
+                            <input type="text" id="roomNewIndex" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomQuantity">Số Lượng</label>
+                            <input type="text" id="roomQuantity" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomUnitPrice">Đơn Giá</label>
+                            <input type="text" id="roomUnitPrice" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomTotal">Tổng Tiền</label>
+                            <input type="text" id="roomTotal" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomNote">Note</label>
+                            <input type="text" id="roomNote">
+                        </div>
+                    </div>
+
+
+                </form>
+                <!-- Nút điều khiển -->
+                <div class="modal-buttons">
+                    <button type="button" class="close-button" onclick="closeModal()">Thoát</button>
+                    <button type="submit" class="save-button">Tạo</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Cập nhật Hóa Đơn -->
+        <div id="updateInvoiceModal" class="modal">
+            <div class="modal-content1">
+                <h2>Cập nhật Hóa Đơn</h2>
+                <form id="addInvoiceForm">
+                    <!-- Hóa đơn phòng -->
+                    <div class="invoice-section">
+                        <h3>Hóa Đơn Phòng</h3>
+                        <div class="form-group">
+                            <label for="InvoiceService">Mã Dịch Vụ</label>
+                            <input type="text" id="roomInvoiceName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="brancId">Mã Chi Nhánh</label>
+                            <input type="text" id="brancId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomId">Mã Phòng</label>
+                            <input type="text" id="roomId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="CustomerId">Mã Khách</label>
+                            <input type="text" id="CustomerId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomOldIndex">Chỉ Số Cũ</label>
+                            <input type="text" id="roomOldIndex" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomNewIndex">Chỉ Số Mới</label>
+                            <input type="text" id="roomNewIndex" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomQuantity">Số Lượng</label>
+                            <input type="text" id="roomQuantity" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomUnitPrice">Đơn Giá</label>
+                            <input type="text" id="roomUnitPrice" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomTotal">Tổng Tiền</label>
+                            <input type="text" id="roomTotal" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomNote">Note</label>
+                            <input type="text" id="roomNote">
+                        </div>
+                    </div>
+                    <!-- các hóa đơn khác tương tự hóa đơn phòng -->
+                    <!-- Hóa đơn Điện -->
+                    <div class="invoice-section">
+                        <h3>Hóa Đơn Điện</h3>
+                        <div class="form-group">
+                            <label for="InvoiceService">Mã Dịch Vụ</label>
+                            <input type="text" id="roomInvoiceName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="brancId">Mã Chi Nhánh</label>
+                            <input type="text" id="brancId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomId">Mã Phòng</label>
+                            <input type="text" id="roomId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="CustomerId">Mã Khách</label>
+                            <input type="text" id="CustomerId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomOldIndex">Chỉ Số Cũ</label>
+                            <input type="text" id="roomOldIndex" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomNewIndex">Chỉ Số Mới</label>
+                            <input type="text" id="roomNewIndex" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomQuantity">Số Lượng</label>
+                            <input type="text" id="roomQuantity" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomUnitPrice">Đơn Giá</label>
+                            <input type="text" id="roomUnitPrice" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomTotal">Tổng Tiền</label>
+                            <input type="text" id="roomTotal" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomNote">Note</label>
+                            <input type="text" id="roomNote">
+                        </div>
+                    </div>
+
+                    <!-- Hóa Đơn Nước -->
+                    <div class="invoice-section">
+                        <h3>Hóa Đơn Nước</h3>
+                        <div class="form-group">
+                            <label for="InvoiceService">Mã Dịch Vụ</label>
+                            <input type="text" id="roomInvoiceName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="brancId">Mã Chi Nhánh</label>
+                            <input type="text" id="brancId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomId">Mã Phòng</label>
+                            <input type="text" id="roomId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="CustomerId">Mã Khách</label>
+                            <input type="text" id="CustomerId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomOldIndex">Chỉ Số Cũ</label>
+                            <input type="text" id="roomOldIndex" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomNewIndex">Chỉ Số Mới</label>
+                            <input type="text" id="roomNewIndex" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomQuantity">Số Lượng</label>
+                            <input type="text" id="roomQuantity" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomUnitPrice">Đơn Giá</label>
+                            <input type="text" id="roomUnitPrice" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomTotal">Tổng Tiền</label>
+                            <input type="text" id="roomTotal" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomNote">Note</label>
+                            <input type="text" id="roomNote">
+                        </div>
+                    </div>
+
+                    <!-- Hóa Đơn Internet -->
+                    <div class="invoice-section">
+                        <h3>Hóa Đơn Internet</h3>
+                        <div class="form-group">
+                            <label for="InvoiceService">Mã Dịch Vụ</label>
+                            <input type="text" id="roomInvoiceName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="brancId">Mã Chi Nhánh</label>
+                            <input type="text" id="brancId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomId">Mã Phòng</label>
+                            <input type="text" id="roomId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="CustomerId">Mã Khách</label>
+                            <input type="text" id="CustomerId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomOldIndex">Chỉ Số Cũ</label>
+                            <input type="text" id="roomOldIndex" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomNewIndex">Chỉ Số Mới</label>
+                            <input type="text" id="roomNewIndex" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomQuantity">Số Lượng</label>
+                            <input type="text" id="roomQuantity" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomUnitPrice">Đơn Giá</label>
+                            <input type="text" id="roomUnitPrice" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomTotal">Tổng Tiền</label>
+                            <input type="text" id="roomTotal" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomNote">Note</label>
+                            <input type="text" id="roomNote">
+                        </div>
+                    </div>
+
+                    <!-- Hóa Đơn Gửi xe -->
+                    <div class="invoice-section">
+                        <h3>Hóa Đơn Gửi xe</h3>
+                        <div class="form-group">
+                            <label for="InvoiceService">Mã Dịch Vụ</label>
+                            <input type="text" id="roomInvoiceName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="brancId">Mã Chi Nhánh</label>
+                            <input type="text" id="brancId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomId">Mã Phòng</label>
+                            <input type="text" id="roomId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="CustomerId">Mã Khách</label>
+                            <input type="text" id="CustomerId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomOldIndex">Chỉ Số Cũ</label>
+                            <input type="text" id="roomOldIndex" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomNewIndex">Chỉ Số Mới</label>
+                            <input type="text" id="roomNewIndex" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomQuantity">Số Lượng</label>
+                            <input type="text" id="roomQuantity" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomUnitPrice">Đơn Giá</label>
+                            <input type="text" id="roomUnitPrice" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomTotal">Tổng Tiền</label>
+                            <input type="text" id="roomTotal" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomNote">Note</label>
+                            <input type="text" id="roomNote">
+                        </div>
+                    </div>
+
+                    <!-- Hóa Đơn Rác -->
+                    <div class="invoice-section">
+                        <h3>Hóa Đơn Rác</h3>
+                        <div class="form-group">
+                            <label for="InvoiceService">Mã Dịch Vụ</label>
+                            <input type="text" id="roomInvoiceName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="brancId">Mã Chi Nhánh</label>
+                            <input type="text" id="brancId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomId">Mã Phòng</label>
+                            <input type="text" id="roomId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="CustomerId">Mã Khách</label>
+                            <input type="text" id="CustomerId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomOldIndex">Chỉ Số Cũ</label>
+                            <input type="text" id="roomOldIndex" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomNewIndex">Chỉ Số Mới</label>
+                            <input type="text" id="roomNewIndex" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomQuantity">Số Lượng</label>
+                            <input type="text" id="roomQuantity" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomUnitPrice">Đơn Giá</label>
+                            <input type="text" id="roomUnitPrice" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomTotal">Tổng Tiền</label>
+                            <input type="text" id="roomTotal" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomNote">Note</label>
+                            <input type="text" id="roomNote">
+                        </div>
+                    </div>
+
+                    <!-- Hóa Đơn Máy Giặt -->
+                    <div class="invoice-section">
+                        <h3>Hóa Đơn Máy Giặt</h3>
+                        <div class="form-group">
+                            <label for="InvoiceService">Mã Dịch Vụ</label>
+                            <input type="text" id="roomInvoiceName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="brancId">Mã Chi Nhánh</label>
+                            <input type="text" id="brancId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomId">Mã Phòng</label>
+                            <input type="text" id="roomId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="CustomerId">Mã Khách</label>
+                            <input type="text" id="CustomerId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomOldIndex">Chỉ Số Cũ</label>
+                            <input type="text" id="roomOldIndex" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomNewIndex">Chỉ Số Mới</label>
+                            <input type="text" id="roomNewIndex" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomQuantity">Số Lượng</label>
+                            <input type="text" id="roomQuantity" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomUnitPrice">Đơn Giá</label>
+                            <input type="text" id="roomUnitPrice" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomTotal">Tổng Tiền</label>
+                            <input type="text" id="roomTotal" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomNote">Note</label>
+                            <input type="text" id="roomNote">
+                        </div>
+                    </div>
+
+                    <!-- Hóa Đơn Bảo trì thiết bị -->
+                    <div class="invoice-section">
+                        <h3>Hóa Đơn Bảo trì thiết bị</h3>
+                        <div class="form-group">
+                            <label for="InvoiceService">Mã Dịch Vụ</label>
+                            <input type="text" id="roomInvoiceName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="brancId">Mã Chi Nhánh</label>
+                            <input type="text" id="brancId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomId">Mã Phòng</label>
+                            <input type="text" id="roomId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="CustomerId">Mã Khách</label>
+                            <input type="text" id="CustomerId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomOldIndex">Chỉ Số Cũ</label>
+                            <input type="text" id="roomOldIndex" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomNewIndex">Chỉ Số Mới</label>
+                            <input type="text" id="roomNewIndex" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomQuantity">Số Lượng</label>
+                            <input type="text" id="roomQuantity" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomUnitPrice">Đơn Giá</label>
+                            <input type="text" id="roomUnitPrice" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomTotal">Tổng Tiền</label>
+                            <input type="text" id="roomTotal" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomNote">Note</label>
+                            <input type="text" id="roomNote">
+                        </div>
+                    </div>
+
+
+                </form>
+                <!-- Nút điều khiển -->
+                <div class="modal-buttons">
+                    <button type="button" class="close-button" onclick="closeModal1()">Thoát</button>
+                    <button type="submit" class="save-button">Cập nhật</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="invoices-list">
             <table class="invoice-table">
                 <thead>
                     <tr>
@@ -81,7 +830,7 @@
                         <th>Khách hàng</th>
                         <th>Phòng</th>
                         <th>Địa chỉ</th>
-                        <th>Ngày tạo</th>
+                        <th>Trạng thái</th>
                         <th>Xem chi tiết</th>
                         <th>Thao tác</th>
                     </tr>
@@ -93,11 +842,12 @@
                         <td>Nguyễn Văn A</td>
                         <td>Phòng 101</td>
                         <td>322 Mỹ Đình, Hà Nội</td>
-                        <td>03/10/2020</td>
-                        <td><a href="chi-tiet-hoa-don.html" class="detail-link">Xem chi tiết</a></td>
+                        <td><span class="status pending">Chưa Thanh Toán</span></td>
+                        <td><a href="javascript:void(0);" class="detail-link" onclick="openInvoiceDetails()">Xem chi
+                                tiết</a></td>
                         <td>
-                            <button class="edit-button">Sửa</button>
-                            <button class="delete-button">Xóa</button>
+                            <button class="edit-button" onclick="openEditModal()">Sửa</button>
+                            <button class="delete-button" onclick="openDeleteModal()">Xóa</button>
                         </td>
                     </tr>
                     <tr>
@@ -106,17 +856,101 @@
                         <td>Trần Văn B</td>
                         <td>Phòng 102</td>
                         <td>322 Mỹ Đình, Hà Nội</td>
-                        <td>04/02/2020</td>
-                        <td><a href="chi-tiet-hoa-don.html" class="detail-link">Xem chi tiết</a></td>
+                        <td><span class="status paid">Đã thanh toán</span></td>
+                        <td><a href="javascript:void(0);" class="detail-link" onclick="openInvoiceDetails()">Xem chi
+                                tiết</a></td>
                         <td>
-                            <button class="edit-button">Sửa</button>
-                            <button class="delete-button">Xóa</button>
+                            <button class="edit-button" onclick="openEditModal()">Sửa</button>
+                            <button class="delete-button" onclick="openDeleteModal()">Xóa</button>
                         </td>
                     </tr>
-                    <!-- Thêm các hóa đơn khác tại đây -->
+
                 </tbody>
             </table>
 
+        </div>
+        <!-- Modal chi tiết hóa đơn -->
+        <div id="invoiceModal" class="invoice-details-modal">
+            <div class="modal-content">
+                <h2 class="invoice-title">Hóa đơn tiền phòng Tháng 1</h2>
+                <div class="invoice-info1">
+                    <p class="branch">Chi nhánh: Hà Nội</p>
+                    <p class="room">Phòng: 205</p>
+                    <p class="address">Địa chỉ: 123, Hà Nội</p>
+                    <p class="customer">khách hàng: Nguyễn Văn A</p>
+                </div>
+                <table class="invoice-table2">
+                    <thead>
+                        <tr>
+                            <th>Tên dịch vụ</th>
+                            <th>Chỉ số cũ</th>
+                            <th>Chỉ số mới</th>
+                            <th>Số lượng</th>
+                            <th>Đơn giá</th>
+                            <th>Tổng tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Tiền phòng</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>5.000.000</td>
+                            <td>5.000.000</td>
+                        </tr>
+                        <tr>
+                            <td>Điện</td>
+                            <td>100</td>
+                            <td>120</td>
+                            <td>2</td>
+                            <td>5,000</td>
+                            <td>10,000</td>
+                        </tr>
+                        <tr>
+                            <td>Nước</td>
+                            <td>50</td>
+                            <td>70</td>
+                            <td>2</td>
+                            <td>3,000</td>
+                            <td>6,000</td>
+                        </tr>
+                        <tr>
+                            <td>Internet</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>100,000</td>
+                            <td>100,000</td>
+                        </tr>
+                        <tr>
+                            <td>Máy giặt</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>80,000</td>
+                            <td>80,000</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr class="total-row">
+                            <td colspan="5" style="text-align: right;">Tổng cộng:</td>
+                            <td>16,000</td> <!-- Tổng tiền -->
+                        </tr>
+                    </tfoot>
+                </table>
+                <div class="invoice-note">
+                    <p>Ghi chú: Không có vấn đề gì.</p>
+                </div>
+                <div class="invoice-status">
+                    <p>Tình trạng hóa đơn: Đã thanh toán</p>
+                </div>
+                <div class="invoice-actions">
+                    <button class="close-btn" onclick="closeInvoiceModal()">Đóng</button>
+                    <button class="close-btn" onclick="statusInvoiceModal()">Xác nhận thanh toán</button>
+                    <button class="save-btn" onclick="saveInvoiceAsPDF()">Lưu dưới dạng PDF</button>
+                </div>
+            </div>
         </div>
 
     </div>

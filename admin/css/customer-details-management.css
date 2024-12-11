@@ -214,13 +214,13 @@ body {
 
 
 .details-container {
-    max-width: 800px;
-    margin: 30px auto;
+    max-width: 100%;
+    margin: 30px;
     /* Tạo khoảng cách trên dưới */
     padding: 20px;
     border: none;
     /* Loại bỏ đường viền */
-    border-radius: 12px;
+    border-radius: 4px;
     /* Bo góc mềm mại hơn */
     background-color: #ffffff;
     /* Màu nền trắng */
@@ -228,7 +228,19 @@ body {
     /* Tạo hiệu ứng đổ bóng */
     transition: transform 0.3s, box-shadow 0.3s;
     /* Hiệu ứng khi hover */
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
+
+/* width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 5px;
+    padding: 10px;
+
+    border-radius: 8px; */
 
 .details-container:hover {
     transform: translateY(-5px);
@@ -285,4 +297,46 @@ h2 {
     /* Màu nền khi hover vào hàng */
     transition: background-color 0.3s;
     /* Hiệu ứng hover */
+}
+
+/* Các button trong modal */
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    width: 100%;
+    /* Chiều rộng đầy đủ */
+    padding: 10px 0;
+    background-color: #f9f9f9;
+    /* Đẩy xuống cuối phần tử cha */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.details-container {
+    position: relative;
+    /* Đặt vị trí tương đối để modal-buttons hoạt động chính xác */
+    padding-bottom: 60px;
+    /* Chừa khoảng trống cho modal-buttons */
+}
+
+.modal-buttons .close-button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.modal-buttons .close-button:hover {
+    background-color: #0056b3;
 }

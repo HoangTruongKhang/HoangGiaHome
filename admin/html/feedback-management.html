@@ -67,6 +67,24 @@
             </div>
             <button class="search-button" onclick="searchFunction()">Tìm Kiếm</button>
         </div>
+        <!-- Modal Phản Hồi -->
+        <div id="replyModal" class="modal">
+            <div class="modal-content">
+                <h2>Phản hồi khách hàng</h2>
+                <label for="feedback-content">Nội dung phản hồi:</label>
+                <input type="text" id="feedback-content" name="feedback-content" required readonly>
+
+                <label for="response">Phản hồi:</label>
+                <textarea id="response" name="response" required rows="4"
+                    placeholder="Nhập nội dung phản hồi"></textarea>
+
+                <div class="modal-buttons">
+                    <button class="close-button" onclick="closeModal()">Đóng</button>
+                    <button class="save-button" onclick="saveResponse()">Gửi</button>
+                </div>
+            </div>
+        </div>
+
         <div class="title-feedback">
             <h2>Danh Sách Phản hồi</h2>
         </div>

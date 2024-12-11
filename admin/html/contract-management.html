@@ -69,14 +69,89 @@
         </div>
         <div class="add-contract">
             <h2>Danh Sách Hợp Đồng</h2>
-            <button class="add-contract-button">+ Thêm hợp đồng</button>
+            <button class="add-contract-button" onclick="openAddModal()">+ Thêm hợp đồng</button>
         </div>
-        <div class="contract-list">
-            <table class="contract-table">
+        <!-- Modal add Contract -->
+        <div id="add-contract-modal" class="modal1">
+            <div class="modal-content1">
+                <h2>Thêm mới Hợp Đồng</h2>
+                <form id="add-contract-form">
+                    <!-- Tên hợp đồng -->
+                    <div class="input-group">
+                        <label for="contract-name">Tên hợp đồng</label>
+                        <input type="text" id="contract-name" name="contract-name" placeholder="Nhập tên hợp đồng"
+                            required>
+                    </div>
+                    <!-- Mã khách hàng -->
+                    <div class="input-group">
+                        <label for="customer-id">Mã khách hàng</label>
+                        <input type="text" id="customer-id" name="customer-id" placeholder="Nhập mã khách hàng"
+                            required>
+                    </div>
+                    <!-- Mã phòng -->
+                    <div class="input-group">
+                        <label for="room-id">Mã phòng</label>
+                        <input type="text" id="room-id" name="room-id" placeholder="Nhập mã phòng" required>
+                    </div>
+                    <!-- Thời gian thuê phòng -->
+                    <div class="input-group">
+                        <label for="rental-period">Thời gian thuê phòng</label>
+                        <select id="rental-period" name="rental-period">
+                            <option value="SIX_MONTHS">6 tháng</option>
+                            <option value="EIGHT_MONTHS">8 tháng</option>
+                            <option value="TWELVE_MONTHS">12 tháng</option>
+                            <option value="EIGHTEEN_MONTHS">18 tháng</option>
+                        </select>
+                    </div>
+                    <!-- Ngày bắt đầu -->
+                    <div class="input-group">
+                        <label for="start-date">Ngày bắt đầu</label>
+                        <input type="date" id="start-date" name="start-date" required>
+                    </div>
+                    <!-- Ngày kết thúc -->
+                    <div class="input-group">
+                        <label for="end-date">Ngày kết thúc</label>
+                        <input type="date" id="end-date" name="end-date" required>
+                    </div>
+                    <!-- Giá thuê phòng -->
+                    <div class="input-group">
+                        <label for="rental-price">Giá thuê phòng</label>
+                        <input type="number" id="rental-price" name="rental-price" placeholder="Nhập giá thuê phòng"
+                            required>
+                    </div>
+                    <!-- Tiền đặt cọc -->
+                    <div class="input-group">
+                        <label for="deposit">Tiền đặt cọc</label>
+                        <input type="number" id="deposit" name="deposit" placeholder="Nhập tiền đặt cọc" required>
+                    </div>
+                    <!-- Trạng thái hợp đồng -->
+                    <div class="input-group">
+                        <label for="contract-status">Trạng thái hợp đồng</label>
+                        <select id="contract-status" name="contract-status">
+                            <option value="ACTIVE">Hoạt động</option>
+                            <option value="COMPLETED">Hoàn thành</option>
+                            <option value="CANCELLED">Hủy bỏ</option>
+                        </select>
+                    </div>
+                    <!-- Ghi chú -->
+                    <div class="input-group">
+                        <label for="notes">Ghi chú</label>
+                        <textarea id="notes" name="notes" placeholder="Nhập ghi chú"></textarea>
+                    </div>
+
+                    <!-- Nút điều khiển -->
+                    <div class="modal-buttons">
+                        <button type="button" class="close-button" onclick="closeModal1()">Thoát</button>
+                        <button type="submit" class="save-button">Thêm mới</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="contract-list1">
+            <table class="contract-table1">
                 <thead>
                     <tr>
                         <th>Mã hợp đồng</th>
-                        <th>Tên hợp đồng</th>
                         <th>Khách thuê</th>
                         <th>Phòng</th>
                         <th>Thời hạn hợp đồng</th>
@@ -89,15 +164,14 @@
                 <tbody>
                     <tr>
                         <td>HD001</td>
-                        <td>Hợp đồng thuê phòng A</td>
                         <td>Nguyễn Văn A</td>
                         <td>Phòng 101</td>
                         <td>12 tháng</td>
-                        <td><a href="chi-tiet-hoa-don.html" class="detail-link">Xem chi tiết</a></td>
+                        <td><a href="contract-details-management.html" class="detail-link">Xem chi tiết</a></td>
                         <td>01/01/2024</td>
                         <td>
-                            <button class="edit-btn">Sửa</button>
-                            <button class="delete-btn">Xóa</button>
+                            <button class="edit-button" onclick="openEditModal()">Sửa</button>
+                            <button class="delete-button" onclick="openDeleteModal()">Xóa</button>
                         </td>
                     </tr>
                     <!-- Thêm các hợp đồng khác nếu cần -->
@@ -106,9 +180,82 @@
             </table>
 
         </div>
-    </div>
+        <!-- Modal Edit Contract -->
+        <div id="edit-contract-modal" class="modal">
+            <div class="modal-content">
+                <h2>Cập nhật Hợp Đồng</h2>
+                <form id="edit-contract-form">
+                    <!-- Tên hợp đồng -->
+                    <div class="input-group">
+                        <label for="contract-name">Tên hợp đồng</label>
+                        <input type="text" id="contract-name" name="contract-name" placeholder="Nhập tên hợp đồng"
+                            required>
+                    </div>
+                    <!-- Mã khách hàng -->
+                    <div class="input-group">
+                        <label for="customer-id">Mã khách hàng</label>
+                        <input type="text" id="customer-id" name="customer-id" placeholder="Nhập mã khách hàng"
+                            required>
+                    </div>
+                    <!-- Mã phòng -->
+                    <div class="input-group">
+                        <label for="room-id">Mã phòng</label>
+                        <input type="text" id="room-id" name="room-id" placeholder="Nhập mã phòng" required>
+                    </div>
+                    <!-- Thời gian thuê phòng -->
+                    <div class="input-group">
+                        <label for="rental-period">Thời gian thuê phòng</label>
+                        <select id="rental-period" name="rental-period">
+                            <option value="SIX_MONTHS">6 tháng</option>
+                            <option value="EIGHT_MONTHS">8 tháng</option>
+                            <option value="TWELVE_MONTHS">12 tháng</option>
+                            <option value="EIGHTEEN_MONTHS">18 tháng</option>
+                        </select>
+                    </div>
+                    <!-- Ngày bắt đầu -->
+                    <div class="input-group">
+                        <label for="start-date">Ngày bắt đầu</label>
+                        <input type="date" id="start-date" name="start-date" required>
+                    </div>
+                    <!-- Ngày kết thúc -->
+                    <div class="input-group">
+                        <label for="end-date">Ngày kết thúc</label>
+                        <input type="date" id="end-date" name="end-date" required>
+                    </div>
+                    <!-- Giá thuê phòng -->
+                    <div class="input-group">
+                        <label for="rental-price">Giá thuê phòng</label>
+                        <input type="number" id="rental-price" name="rental-price" placeholder="Nhập giá thuê phòng"
+                            required>
+                    </div>
+                    <!-- Tiền đặt cọc -->
+                    <div class="input-group">
+                        <label for="deposit">Tiền đặt cọc</label>
+                        <input type="number" id="deposit" name="deposit" placeholder="Nhập tiền đặt cọc" required>
+                    </div>
+                    <!-- Trạng thái hợp đồng -->
+                    <div class="input-group">
+                        <label for="contract-status">Trạng thái hợp đồng</label>
+                        <select id="contract-status" name="contract-status">
+                            <option value="ACTIVE">Hoạt động</option>
+                            <option value="COMPLETED">Hoàn thành</option>
+                            <option value="CANCELLED">Hủy bỏ</option>
+                        </select>
+                    </div>
+                    <!-- Ghi chú -->
+                    <div class="input-group">
+                        <label for="notes">Ghi chú</label>
+                        <textarea id="notes" name="notes" placeholder="Nhập ghi chú"></textarea>
+                    </div>
 
-    </div>
+                    <!-- Nút điều khiển -->
+                    <div class="modal-buttons">
+                        <button type="button" class="close-button" onclick="closeModal()">Thoát</button>
+                        <button type="submit" class="save-button">Cập nhật</button>
+                    </div>
+                </form>
+            </div>
+        </div>
 
     </div>
 </body>

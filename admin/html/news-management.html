@@ -71,6 +71,50 @@
             <h2>Danh Sách Tin Tức</h2>
             <button class="add-news-button">+ Thêm tin tức</button>
         </div>
+        <div class="add-news-modal" id="addNewsModal">
+            <div class="modal-content">
+                <h2>Thêm mới tin tức</h2>
+                <form id="addNewsForm">
+                    <div class="form-left">
+                        <label for="title">Tiêu đề</label>
+                        <input type="text" id="title" name="title" required>
+
+                        <label for="image">Ảnh</label>
+                        <input type="text" id="image" name="image" required>
+
+                        <label for="description">Mô tả</label>
+                        <input type="text" id="description" name="description" required>
+                    </div>
+                    <div class="modal-buttons">
+                        <button type="button" class="close-button" onclick="closeModal()">Thoát</button>
+                        <button type="submit" class="save-button">Thêm</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="edit-news-modal" id="editNewsModal">
+            <div class="modal-content">
+                <h2>Cập nhật tin tức</h2>
+                <form id="editNewsForm">
+                    <div class="form-left">
+                        <label for="editTitle">Tiêu đề</label>
+                        <input type="text" id="editTitle" name="title" required>
+
+                        <label for="editImage">Ảnh</label>
+                        <input type="text" id="editImage" name="image" required>
+
+                        <label for="editDescription">Mô tả</label>
+                        <input type="text" id="editDescription" name="description" required>
+                    </div>
+                    <div class="modal-buttons">
+                        <button type="button" class="close-button" onclick="closeEditModal()">Thoát</button>
+                        <button type="submit" class="save-button">Cập nhật</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
         <div class="news-list">
             <table class="news-table">
                 <thead>
@@ -79,7 +123,7 @@
                         <th>Tiêu đề</th>
                         <th>Ảnh</th>
                         <th>Mô tả</th>
-                        <th>Mã người tạo</th>
+                        <th>Tên nhân viên</th>
                         <th>Ngày tạo</th>
                         <th>Thao tác</th>
                     </tr>

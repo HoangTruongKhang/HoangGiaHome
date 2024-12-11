@@ -297,6 +297,24 @@ h2 {
     background-color: #e8f5e9;
 }
 
+/* Trạng thái phản hồi */
+.status {
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.status.pending {
+    background-color: #ffcc00;
+    color: #333;
+}
+
+.status.paid {
+    background-color: #28a745;
+    color: white;
+}
+
 /* Link xem chi tiết */
 .detail-link {
     color: #009205;
@@ -332,4 +350,458 @@ h2 {
 
 .delete-button:hover {
     background-color: #c0392b;
+}
+
+/*chi tiết hóa đơn*/
+/* Modal Background */
+.invoice-details-modal {
+    display: none;
+    /* Ẩn modal mặc định */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    /* Nền tối mờ */
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Nội dung Modal */
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 60%;
+    /* Chiều rộng của modal */
+    max-width: 800px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* Tiêu đề Hóa đơn - Căn giữa và màu xanh */
+.invoice-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #009205;
+    /* Màu xanh cho tên hóa đơn */
+    text-align: center;
+    /* Căn giữa */
+}
+
+/* Căn trái cho chi nhánh, phòng, địa chỉ */
+.invoice-info1 p {
+    text-align: left;
+    /* Căn trái */
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* Bảng chi tiết hóa đơn - Thead và Tbody */
+.invoice-table2 {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.invoice-table2 th,
+.invoice-table2 td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+/* Màu nền xanh nhạt cho thead */
+.invoice-table2 th {
+    background-color: #28a745;
+    /* Xanh nhạt cho tiêu đề bảng */
+    font-weight: bold;
+}
+
+/* Trường Tổng tiền thêm vào dưới bảng tbody */
+.invoice-table2 tfoot {
+    font-weight: bold;
+    background-color: #f9f9f9;
+    /* Màu nền nhạt cho tổng tiền */
+}
+
+.invoice-table2 .total-row td {
+    text-align: right;
+    background-color: #f9f9f9;
+    border-top: 2px solid #ddd;
+}
+
+/* Ghi chú và Tình trạng - Căn trái */
+.invoice-note,
+.invoice-status {
+    margin-bottom: 20px;
+    text-align: left;
+    /* Căn trái */
+    font-size: 16px;
+}
+
+/* Các nút hành động - Căn phải */
+.invoice-actions {
+    text-align: right;
+    /* Căn phải */
+}
+
+.invoice-actions button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    margin: 10px;
+}
+
+.invoice-actions button:hover {
+    background-color: #45a049;
+}
+
+/* Nút Đóng */
+.close-btn {
+    background-color: #f44336;
+}
+
+.close-btn:hover {
+    background-color: #e53935;
+}
+
+/* Nút Lưu PDF */
+.save-btn {
+    background-color: #2196F3;
+}
+
+.save-btn:hover {
+    background-color: #1976D2;
+}
+
+/*thêm mới*/
+/* Full width modal */
+#addInvoiceModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Background overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* Modal content with more width and height */
+.modal-content {
+    width: 95%;
+    /* Increased width */
+    max-width: 1200px;
+    /* Increased max width */
+    background-color: #fff;
+    padding: 30px;
+    /* Increased padding for more space */
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    /* Allow scrolling when content overflows */
+    max-height: 90vh;
+    /* Increased height limit */
+}
+
+/* Centered title with margin bottom */
+.modal-content h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.invoice-section h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Form style */
+#addInvoiceForm {
+    width: 100%;
+    /* Ensures the form spans the entire modal content width */
+    display: flex;
+    flex-wrap: wrap;
+    /* Allow invoice sections to wrap */
+    justify-content: space-between;
+    /* Distribute sections evenly */
+}
+
+/* Invoice section styling: 4 sections per row */
+.invoice-section {
+    width: 23%;
+    /* 4 items per row */
+    margin-right: 1%;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    /* Ensure padding and margin don't affect width */
+    background-color: #e7ebe7;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* Label alignment for invoice sections */
+.invoice-section label {
+    display: block;
+    text-align: left;
+    font-size: 12px;
+    /* Smaller font size */
+    margin-bottom: 5px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Input field styling */
+.invoice-section input {
+    width: 100%;
+    padding: 5px;
+    font-size: 14px;
+    /* Smaller input field size */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Make sure the last item in each row does not have extra margin */
+.invoice-section:nth-child(4n) {
+    margin-right: 0;
+}
+
+/* Nút hành động */
+#addInvoiceModal .modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+#addInvoiceModal .close-button,
+#addInvoiceModal .save-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 48%;
+}
+
+#addInvoiceModal .close-button {
+    background-color: #f44336;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+#addInvoiceModal .close-button:hover {
+    background-color: #d32f2f;
+}
+
+#addInvoiceModal .save-button {
+    background-color: #009205;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+#updateCaddInvoiceModalustomerModal .save-button:hover {
+    background-color: #006b04;
+}
+
+
+
+/* Ensuring modal content fills space */
+@media screen and (max-width: 768px) {
+    .invoice-section {
+        width: 48%;
+        /* Two sections per row for smaller screens */
+    }
+
+    .modal-buttons button {
+        width: 48%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .invoice-section {
+        width: 100%;
+        /* Stacking all sections vertically on smaller screens */
+    }
+
+    .modal-buttons button {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+
+
+/*Sửa hóa đơn xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*/
+/* Full width modal */
+#updateInvoiceModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Background overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* Modal content with more width and height */
+.modal-content1 {
+    width: 95%;
+    /* Increased width */
+    max-width: 1200px;
+    /* Increased max width */
+    background-color: #fff;
+    padding: 30px;
+    /* Increased padding for more space */
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    /* Allow scrolling when content overflows */
+    max-height: 90vh;
+    /* Increased height limit */
+}
+
+/* Centered title with margin bottom */
+.modal-content1 h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.invoice-section h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Form style */
+#addInvoiceForm {
+    width: 100%;
+    /* Ensures the form spans the entire modal content width */
+    display: flex;
+    flex-wrap: wrap;
+    /* Allow invoice sections to wrap */
+    justify-content: space-between;
+    /* Distribute sections evenly */
+}
+
+/* Invoice section styling: 4 sections per row */
+.invoice-section {
+    width: 23%;
+    /* 4 items per row */
+    margin-right: 1%;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    /* Ensure padding and margin don't affect width */
+    background-color: #e7ebe7;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* Label alignment for invoice sections */
+.invoice-section label {
+    display: block;
+    text-align: left;
+    font-size: 12px;
+    /* Smaller font size */
+    margin-bottom: 5px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Input field styling */
+.invoice-section input {
+    width: 100%;
+    padding: 5px;
+    font-size: 14px;
+    /* Smaller input field size */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Make sure the last item in each row does not have extra margin */
+.invoice-section:nth-child(4n) {
+    margin-right: 0;
+}
+
+/* Nút hành động */
+#updateInvoiceModal .modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    width: 70%;
+    /* Tăng chiều rộng của nút */
+}
+
+#updateInvoiceModal .close-button,
+#updateInvoiceModal .save-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+
+}
+
+#updateInvoiceModal .close-button {
+    background-color: #f44336;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+#updateInvoiceModal .close-button:hover {
+    background-color: #d32f2f;
+}
+
+#updateInvoiceModal .save-button {
+    background-color: #009205;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+#updateInvoiceModalustomerModal .save-button:hover {
+    background-color: #006b04;
+}
+
+
+
+/* Ensuring modal content fills space */
+@media screen and (max-width: 768px) {
+    .invoice-section {
+        width: 48%;
+        /* Two sections per row for smaller screens */
+    }
+
+    .modal-buttons button {
+        width: 48%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .invoice-section {
+        width: 100%;
+        /* Stacking all sections vertically on smaller screens */
+    }
+
+    .modal-buttons button {
+        width: 100%;
+        margin-top: 10px;
+    }
 }

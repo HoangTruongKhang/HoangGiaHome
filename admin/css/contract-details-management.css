@@ -195,12 +195,21 @@ body {
     display: block;
 }
 
-h2 {
-    color: #009205;
-    margin: 0;
-    margin-left: 40px;
-    /* Loại bỏ margin dư thừa */
-    text-align: left;
+/* Nút tìm kiếm */
+.branches .search-button {
+    background-color: #009205;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    padding: 10px 10px;
+    font-size: 12px;
+    width: auto;
+}
+
+.branches .search-button:hover {
+    background-color: #cd0000;
+    color: #ffffff;
 }
 
 /* Nút tìm kiếm */
@@ -220,227 +229,100 @@ h2 {
     color: #ffffff;
 }
 
-/* Nút tìm kiếm */
-.title-feedback {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 5px;
-    padding: 10px;
 
-    border-radius: 8px;
-}
-
-.feedback-list {
-    display: flex;
+/* .details-container {
+    max-width: 100%;
+    margin: 30px; */
+/* Tạo khoảng cách trên dưới */
+/* padding: 20px;
+    border: none; */
+/* Loại bỏ đường viền */
+/* border-radius: 4px; */
+/* Bo góc mềm mại hơn */
+/* background-color: #ffffff; */
+/* Màu nền trắng */
+/* box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); */
+/* Tạo hiệu ứng đổ bóng */
+/* transition: transform 0.3s, box-shadow 0.3s; */
+/* Hiệu ứng khi hover */
+/* justify-content: space-between;
     flex-wrap: wrap;
-    /* Cho phép cuộn xuống khi không đủ không gian */
-    justify-content: flex-start;
-    /* Canh đều các phòng trong hàng */
-    margin: 10px;
+} */
 
-    gap: 20px;
-    /* Cho phép cuộn ngang nếu quá nhiều phòng */
-    max-height: 90%;
-    /* Đặt chiều cao tối đa cho danh sách phòng */
-    overflow-y: auto;
-
-}
-
-/* Modal Phản Hồi */
-#replyModal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    /* Màu nền mờ */
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    animation: fadeIn 0.3s ease-out;
-}
-
-#replyModal .modal-content {
+.details-container {
     background-color: #fff;
-    width: 60%;
-    max-width: 800px;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    position: relative;
-}
-
-#replyModal .modal-content h2 {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 24px;
-    color: #009205;
-}
-
-/* Các trường trong form */
-#replyModal .modal-content label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 8px;
-    font-size: 16px;
-}
-
-#replyModal .modal-content input,
-#replyModal .modal-content textarea {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    transition: border 0.3s ease;
-}
-
-#replyModal .modal-content textarea {
-    resize: vertical;
-    /* Cho phép người dùng thay đổi kích thước textarea */
-}
-
-/* Nút hành động */
-#replyModal .modal-buttons {
+    max-height: 100%;
+    overflow-y: auto;
     display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    margin-top: 20px;
+    flex-direction: column;
+    justify-content: flex-start;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 13px;
+    /* Giảm cỡ chữ toàn bộ */
+    line-height: 1.4;
+    /* Giảm khoảng cách dòng để phù hợp với cỡ chữ nhỏ */
 }
 
-#replyModal .close-button,
-#replyModal .save-button {
-    padding: 12px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
+.details-container h4 {
+    text-align: center;
+    color: #4CAF50;
+    font-size: 1.4rem;
+    /* Giảm kích thước chữ h2 */
+    margin-top: 0;
+    margin-bottom: 15px;
 }
 
-#replyModal .close-button {
-    background-color: #f44336;
-    color: white;
-}
-
-#replyModal .close-button:hover {
-    background-color: #d32f2f;
-}
-
-#replyModal .save-button {
-    background-color: #009205;
-    color: white;
-}
-
-#replyModal .save-button:hover {
-    background-color: #006b04;
-}
-
-/* Hiệu ứng hiển thị */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Focus effect trên input và textarea */
-#replyModal .modal-content input:focus,
-#replyModal .modal-content textarea:focus {
-    border-color: #009205;
-    outline: none;
-}
-
-
-
-
-/* Bảng list feedback */
-.feedback-table {
+.details-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    overflow: hidden;
-    font-size: 14px;
+    margin-bottom: 15px;
 }
 
-.feedback-table thead {
-    background-color: #009205;
-    color: white;
-}
-
-.feedback-table th,
-.feedback-table td {
-    padding: 10px;
+.details-table th,
+.details-table td {
+    padding: 8px;
+    /* Giảm padding trong bảng */
     text-align: left;
-    border: 1px solid #ddd;
+    font-size: 15px;
+    /* Giảm kích thước chữ trong bảng */
+    border-bottom: 1px solid #ddd;
 }
 
-.feedback-table th {
-    font-weight: bold;
-}
-
-.news-table tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-.feedback-table tbody tr:hover {
-    background-color: #e8f5e9;
-}
-
-/* Trạng thái phản hồi */
-.status {
-    font-weight: bold;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 12px;
-}
-
-.status.pending {
-    background-color: #ffcc00;
+.details-table th {
+    background-color: #f4f4f4;
+    font-weight: 600;
     color: #333;
 }
 
-.status.replied {
-    background-color: #28a745;
-    color: white;
+.details-table td {
+    color: #555;
 }
 
+.modal-buttons {
+    margin-top: 15px;
+    text-align: center;
+}
 
-/* Nút thao tác */
-.reply-button,
-.delete-button {
-    background-color: #009205;
+.modal-buttons .close-button {
+    background-color: #4CAF50;
     color: white;
-    border: none;
-    padding: 6px 12px;
-    margin-right: 5px;
-    cursor: pointer;
+    padding: 8px 15px;
+    /* Giảm padding */
     border-radius: 5px;
-    font-size: 12px;
+    text-decoration: none;
+    font-size: 13px;
+    /* Giảm kích thước chữ của nút */
+    font-weight: bold;
+    display: inline-block;
     transition: background-color 0.3s ease;
 }
 
-.reply-button:hover {
-    background-color: #007a03;
+.modal-buttons .close-button:hover {
+    background-color: #45a049;
 }
 
-.delete-button {
-    background-color: #e74c3c;
-}
-
-.delete-button:hover {
-    background-color: #c0392b;
+.modal-buttons .close-button:active {
+    background-color: #388e3c;
 }

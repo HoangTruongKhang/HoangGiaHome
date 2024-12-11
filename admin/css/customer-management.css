@@ -225,13 +225,17 @@ body {
     border-radius: 8px;
 }
 
-h2 {
+.add-customer h2 {
+    text-align: center;
+    /* Canh giữa nội dung */
+    margin-bottom: 30px;
+    /* Khoảng cách bên dưới */
+    font-size: 24px;
+    /* Tăng kích thước chữ nếu cần */
     color: #009205;
-    margin: 0;
-    margin-left: 40px;
-    /* Loại bỏ margin dư thừa */
-    text-align: left;
+    /* Giữ màu xanh lá hoặc thay đổi theo ý thích */
 }
+
 
 .add-customer-button {
     background-color: #009205;
@@ -245,104 +249,232 @@ h2 {
     transition: background-color 0.3s;
 }
 
-/*////////////////////////////////////////*/
-/* Modal overlay */
-.add-account-modal {
-    display: none;
+/*Thêm mới khách hàng*/
+.add-customer-modal {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    /* Mặc định ẩn */
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 9999;
 }
 
-/* Modal content */
 .modal-content {
-    background-color: #ffffff;
-    width: 400px;
+    background-color: #fff;
+    width: 70%;
+    /* Tăng chiều rộng modal để chứa 2 cột */
+    max-width: 800px;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.3s ease-out;
     position: relative;
 }
 
-.modal-content h2 {
-    margin-bottom: 20px;
-    color: #009205;
-    text-align: center;
+.modal-content form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    /* Khoảng cách giữa các cột */
 }
 
-.modal-content label {
+.form-left,
+.form-right {
+    flex: 1;
+    /* Cột có chiều rộng đều nhau */
+    min-width: 45%;
+    /* Đảm bảo cột không quá hẹp */
+}
+
+.modal-content form label {
     display: block;
-    margin-bottom: 5px;
     font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 14px;
 }
 
-.modal-content input,
-.modal-content select {
+.form-left input,
+.form-right input,
+.form-right select {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 5px;
     font-size: 14px;
 }
 
 .modal-buttons {
+    width: 100%;
+    /* Nút điều khiển nằm ở cuối modal */
     display: flex;
     justify-content: space-between;
+    gap: 10px;
+    margin-top: 20px;
 }
 
-.close-button,
-.save-button {
+.modal-buttons .close-button,
+.modal-buttons .save-button {
     padding: 10px 20px;
-    font-size: 14px;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
+    font-size: 14px;
+}
+
+.modal-buttons .close-button {
+    background-color: #f44336;
+    color: white;
     transition: background-color 0.3s;
 }
 
-.close-button {
-    background-color: #e74c3c;
-    color: white;
+.modal-buttons .close-button:hover {
+    background-color: #d32f2f;
 }
 
-.close-button:hover {
-    background-color: #c0392b;
-}
-
-.save-button {
+.modal-buttons .save-button {
     background-color: #009205;
     color: white;
+    transition: background-color 0.3s;
 }
 
-.save-button:hover {
-    background-color: #007a03;
+.modal-buttons .save-button:hover {
+    background-color: #006b04;
 }
 
 
+/* Hiệu ứng hiển thị */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/*xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*/
+/* Modal Cập nhật khách hàng */
+#updateCustomerModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+#updateCustomerModal .modal-content {
+    background-color: #fff;
+    width: 70%;
+    max-width: 800px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.3s ease-out;
+    position: relative;
+}
+
+/* Tiêu đề */
+#updateCustomerModal .modal-content h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 24px;
+    color: #009205;
+}
+
+/* Form chia đôi */
+#updateCustomerModal .modal-content form {
+    display: flex;
+    gap: 20px;
+}
+
+#updateCustomerModal .modal-content .form-left,
+#updateCustomerModal .modal-content .form-right {
+    width: 50%;
+}
+
+#updateCustomerModal .modal-content form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+#updateCustomerModal .modal-content form input,
+#updateCustomerModal .modal-content form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Nút hành động */
+#updateCustomerModal .modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+#updateCustomerModal .close-button,
+#updateCustomerModal .save-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#updateCustomerModal .close-button {
+    background-color: #f44336;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+#updateCustomerModal .close-button:hover {
+    background-color: #d32f2f;
+}
+
+#updateCustomerModal .save-button {
+    background-color: #009205;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+#updateCustomerModal .save-button:hover {
+    background-color: #006b04;
+}
+
+/* Hiệu ứng hiển thị */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*List customer*/
 .customer-list {
     display: flex;
     flex-wrap: wrap;

@@ -343,122 +343,123 @@ h2 {
     }
 }
 
-/*---------- cập nhật*/
-/* Modal for updating account */
 /* Modal Cập nhật tài khoản */
 #updateAccountModal {
-    display: none;
-    /* Ẩn modal mặc định */
     position: fixed;
-    /* Vị trí cố định */
-    z-index: 1;
-    /* Đặt phía trên cùng */
-    left: 0;
     top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
-    /* Nếu cần, thêm cuộn */
-    background-color: rgba(0, 0, 0, 0.4);
-    /* Màu nền mờ */
-    padding-top: 60px;
-    /* Khoảng cách từ trên xuống */
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    padding: 40px;
 }
 
-/* Nội dung modal */
-.modal-content {
+#updateAccountModal .modal-content {
     background-color: #fff;
-    margin: 5% auto;
+    width: 70%;
+    max-width: 800px;
     padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 500px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.3s ease-out;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
 }
 
-/* Tiêu đề modal */
-.modal-content h2 {
+#updateAccountModal .modal-content h2 {
+    text-align: center;
+    margin-bottom: 50px;
     font-size: 24px;
-    margin-bottom: 20px;
-    color: #333;
+    color: #009205;
 }
 
-/* Đóng modal */
-.close {
-    color: #aaa;
-    font-size: 28px;
-    font-weight: bold;
-    position: absolute;
-    top: 10px;
-    right: 20px;
+/* Form chia đôi - form-left và form-right nằm cùng hàng ngang */
+#updateAccountModal .modal-content form {
+    display: flex;
+    gap: 20px;
 }
 
-.close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
+#updateAccountModal .modal-content .form-left,
+#updateAccountModal .modal-content .form-right {
+    width: 50%;
 }
 
-/* Các label cho form */
-.modal-content label {
+/* Các input */
+#updateAccountModal .modal-content form label {
     display: block;
-    font-size: 14px;
+    font-weight: bold;
     margin-bottom: 5px;
-    color: #333;
+    font-size: 14px;
 }
 
-/* Các input của form */
-.modal-content input[type="text"],
-.modal-content input[type="tel"],
-.modal-content select {
+#updateAccountModal .modal-content form input,
+#updateAccountModal .modal-content form select {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 14px;
 }
 
-.modal-content input[type="text"]:focus,
-.modal-content input[type="tel"]:focus,
-.modal-content select:focus {
-    border-color: #4CAF50;
-    outline: none;
-}
-
-/* Các button trong modal */
-.modal-buttons {
+/* Nút hành động - Nằm dưới cùng */
+#updateAccountModal .modal-buttons {
     display: flex;
     justify-content: space-between;
+    /* Đưa các nút vào 2 bên */
+    gap: 10px;
+    margin-top: 0px;
+    /* Đảm bảo các nút nằm ở dưới cùng */
+    padding-top: 20px;
+    /* Thêm khoảng cách phía trên các nút */
 }
 
-.save-button,
-.close-button {
+#updateAccountModal .close-button,
+#updateAccountModal .save-button {
     padding: 10px 20px;
-    font-size: 16px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 14px;
 }
 
-.save-button {
-    background-color: #4CAF50;
-    color: #fff;
-}
-
-.save-button:hover {
-    background-color: #45a049;
-}
-
-.close-button {
+#updateAccountModal .close-button {
     background-color: #f44336;
-    color: #fff;
+    color: white;
+    transition: background-color 0.3s;
 }
 
-.close-button:hover {
-    background-color: #e53935;
+#updateAccountModal .close-button:hover {
+    background-color: #d32f2f;
+}
+
+#updateAccountModal .save-button {
+    background-color: #009205;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+#updateAccountModal .save-button:hover {
+    background-color: #006b04;
+}
+
+/* Hiệu ứng hiển thị */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 
@@ -466,9 +467,7 @@ h2 {
 
 
 
-
-
-
+/*Account list*/
 .account-list {
     display: flex;
     flex-wrap: wrap;

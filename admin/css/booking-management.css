@@ -280,137 +280,62 @@ body {
 }
 
 
-
-
-
-/* Room Management List */
-.room-list {
+.booking-list {
     display: flex;
     flex-wrap: wrap;
     /* Cho phép cuộn xuống khi không đủ không gian */
     justify-content: flex-start;
     /* Canh đều các phòng trong hàng */
-    padding: 0 50px;
-    gap: 20px;
+    margin-bottom: 20px;
+    gap: 10px;
     /* Cho phép cuộn ngang nếu quá nhiều phòng */
-    max-height: 500px;
+    max-height: 90%;
     /* Đặt chiều cao tối đa cho danh sách phòng */
     overflow-y: auto;
+    overflow-x: auto;
     /* Thêm thanh cuộn dọc */
 }
 
-/* Room Item */
-.room-item {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: calc(25% - 20px);
-    /* 4 ô trong 1 hàng, với khoảng cách 20px */
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
-    transition: transform 0.3s ease-in-out;
-    box-sizing: border-box;
-    /* Đảm bảo phần padding không làm thay đổi kích thước */
-}
-
-/* Phòng item hover */
-.room-item:hover {
-    transform: scale(1.05);
-    /* Tạo hiệu ứng phóng to khi hover */
-}
-
-/* Đặt tên phòng và icon cùng một hàng */
-.room-name-icon,
-.customer-name-icon {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.room-name-icon .room-icon,
-.customer-name-icon .customer-icon {
-    font-size: 18px;
-    color: #3498db;
-    /* Màu xanh lam cho icon */
-}
-
-.room-name {
-    font-size: 14px;
-    font-weight: bold;
-    color: #333;
-}
-
-.customer-name {
-    font-size: 14px;
-    color: #777;
-}
-
-/* Giá phòng */
-.price {
-    font-size: 14px;
-    color: red;
-    /* Màu đỏ cho giá */
-    font-weight: bold;
-}
-
-/* Nút Trả phòng */
-.btn-checkout {
-    background-color: #1dd1a1;
-    /* Màu xanh lá cho nút trả phòng */
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 4px;
-    font-size: 14px;
+.booking-table {
     width: 100%;
-    transition: background-color 0.3s;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
-.btn-checkout:hover {
-    background-color: #0097e6;
-    /* Màu xanh dương khi hover */
+.booking-table thead {
+    background-color: #009205;
+    color: white;
 }
 
-/* Các nút Chỉnh sửa và Xóa nằm chung 1 hàng */
-.room-buttons {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
+.booking-table th,
+.booking-table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
 }
 
-/* Nút Chỉnh sửa và Xóa */
-.room-buttons button {
-    border: none;
-    padding: 8px 16px;
-    cursor: pointer;
-    border-radius: 4px;
-    font-size: 14px;
-    transition: background-color 0.3s;
-    width: 48%;
+.booking-table th {
+    font-weight: bold;
 }
 
-/* Nút Chỉnh sửa */
-.btn-edit {
-    background-color: #3498db;
-    /* Màu xanh dương cho nút Chỉnh sửa */
+.booking-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
 }
 
-.btn-edit:hover {
-    background-color: #2980b9;
-    /* Màu xanh dương đậm khi hover */
+.booking-table tbody tr:hover {
+    background-color: #e8f5e9;
 }
 
-/* Nút Xóa */
-.btn-delete {
-    background-color: #e84118;
-    /* Màu đỏ cho nút Xóa */
+/* Link xem chi tiết */
+.detail-link {
+    color: #009205;
+    text-decoration: none;
+    font-weight: bold;
 }
 
-.btn-delete:hover {
-    background-color: #c0392b;
-    /* Màu đỏ đậm khi hover */
+.detail-link:hover {
+    text-decoration: underline;
 }

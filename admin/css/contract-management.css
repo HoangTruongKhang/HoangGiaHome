@@ -245,7 +245,7 @@ h2 {
     transition: background-color 0.3s;
 }
 
-.contract-list {
+.contract-list1 {
     display: flex;
     flex-wrap: wrap;
     /* Cho phép cuộn xuống khi không đủ không gian */
@@ -262,7 +262,7 @@ h2 {
 
 }
 
-.contract-table {
+.contract-table1 {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
@@ -271,27 +271,27 @@ h2 {
     overflow: hidden;
 }
 
-.contract-table thead {
+.contract-table1 thead {
     background-color: #009205;
     color: white;
 }
 
-.contract-table th,
-.contract-table td {
+.contract-table1 th,
+.contract-table1 td {
     padding: 10px;
     text-align: left;
     border: 1px solid #ddd;
 }
 
-.contract-table th {
+.contract-table1 th {
     font-weight: bold;
 }
 
-.contract-table tbody tr:nth-child(even) {
+.contract-table1 tbody tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-.contract-table tbody tr:hover {
+.contract-table1 tbody tr:hover {
     background-color: #e8f5e9;
 }
 
@@ -307,8 +307,8 @@ h2 {
 }
 
 /* Nút thao tác */
-.edit-btn,
-.delete-btn {
+.edit-button,
+.delete-button {
     background-color: #009205;
     color: white;
     border: none;
@@ -320,14 +320,294 @@ h2 {
     transition: background-color 0.3s ease;
 }
 
-.edit-btn:hover {
+.edit-button:hover {
     background-color: #007a03;
 }
 
-.delete-btn {
+.delete-button {
     background-color: #e74c3c;
 }
 
-.delete-btn:hover {
+.delete-button:hover {
     background-color: #c0392b;
+}
+
+/*thêm mới hợp đồng*/
+/* Style cho Modal */
+.modal1 {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    overflow: auto;
+    padding-top: 60px;
+    box-sizing: border-box;
+}
+
+.modal-content1 {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding-top: 10px;
+}
+
+.close-button,
+.save-button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 48%;
+    text-align: center;
+}
+
+.close-button {
+    background-color: #ddd;
+    color: #333;
+}
+
+.save-button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.close-button:hover {
+    background-color: #ccc;
+}
+
+.save-button:hover {
+    background-color: #45a049;
+}
+
+.modal.show {
+    display: block;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+    font-size: 14px;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+}
+
+.close-button,
+.save-button {
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: center;
+}
+
+.close-button {
+    background-color: #ccc;
+    color: white;
+}
+
+.save-button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.close-button:hover {
+    background-color: #999;
+}
+
+.save-button:hover {
+    background-color: #45a049;
+}
+
+
+
+/*Cập nhật hợp đồng*/
+/* Style cho Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    overflow: auto;
+    padding-top: 60px;
+    box-sizing: border-box;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding-top: 10px;
+}
+
+.close-button,
+.save-button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 48%;
+    text-align: center;
+}
+
+.close-button {
+    background-color: #ddd;
+    color: #333;
+}
+
+.save-button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.close-button:hover {
+    background-color: #ccc;
+}
+
+.save-button:hover {
+    background-color: #45a049;
+}
+
+.modal.show {
+    display: block;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+    font-size: 14px;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+}
+
+.close-button,
+.save-button {
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: center;
+}
+
+.close-button {
+    background-color: #ccc;
+    color: white;
+}
+
+.save-button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.close-button:hover {
+    background-color: #999;
+}
+
+.save-button:hover {
+    background-color: #45a049;
 }

@@ -78,50 +78,58 @@ function validateForm(data) {
     return true;
 }
 
-// Mở modal Cập nhật tài khoản khi click vào nút "Sửa"
-document.querySelectorAll('.edit-button').forEach(button => {
-    button.addEventListener('click', function () {
-        // Lấy thông tin từ dòng tương ứng trong bảng
-        const row = this.closest('tr');
-        const accountId = row.cells[0].textContent; // Lấy mã tài khoản
-        const username = row.cells[1].textContent; // Lấy tên đăng nhập
-        const lastName = row.cells[2].textContent; // Lấy họ
-        const firstName = row.cells[3].textContent; // Lấy tên
-        const fullName = row.cells[4].textContent; // Lấy họ và tên
-        const role = row.cells[5].textContent; // Lấy vai trò
-        const creationDate = row.cells[6].textContent; // Lấy ngày tạo (nếu cần)
-        const branch = row.cells[7].textContent; // Lấy chi nhánh (giả sử có trong bảng)
+document.addEventListener("DOMContentLoaded", () => {
+    const editButtons = document.querySelectorAll(".edit-button");
+    const updateModal = document.getElementById("updateAccountModal");
+    const closeModalButtons = document.querySelectorAll(".close, .close-button");
 
-        // Điền dữ liệu vào form modal
-        document.getElementById('update-username').value = username;
-        document.getElementById('update-last-name').value = lastName;
-        document.getElementById('update-first-name').value = firstName;
-        document.getElementById('update-phone-number').value = ''; // Có thể lấy từ cơ sở dữ liệu nếu có
-        document.getElementById('update-role').value = role === 'Quản trị viên' ? 'ADMIN' : 'USER';
+    // Lấy các trường trong modal để điền dữ liệu
+    const accountIdField = document.getElementById("account_id");
+    const usernameField = document.getElementById("username");
+    const lastNameField = document.getElementById("last-name");
+    const firstNameField = document.getElementById("first-name");
+    const fullNameField = document.getElementById("full-name");
+    const phoneNumberField = document.getElementById("phone-number");
+    const roleField = document.getElementById("update-role");
+    const branchField = document.getElementById("update-branch");
 
-        // Điền chi nhánh vào select
-        const branchSelect = document.getElementById('update-branch');
-        for (let option of branchSelect.options) {
-            if (option.value === branch) {
-                option.selected = true; // Chọn chi nhánh đúng
-                break;
-            }
-        }
+    // Hiển thị modal cập nhật với thông tin của tài khoản được chọn
+    editButtons.forEach((button) => {
+        button.addEventListener("click", (event) => {
+            const row = event.target.closest("tr"); // Lấy dòng (row) chứa tài khoản
+            const cells = row.querySelectorAll("td"); // Lấy tất cả các ô (cell) trong dòng
 
-        // Mở modal
-        document.getElementById('updateAccountModal').style.display = 'block';
+            // Điền thông tin vào modal
+            accountIdField.value = cells[0].textContent.trim(); // Mã tài khoản
+            usernameField.value = cells[2].textContent.trim(); // Tên đăng nhập
+            lastNameField.value = cells[3].textContent.trim().split(" ")[0]; // Họ
+            firstNameField.value = cells[3].textContent.trim().split(" ")[1]; // Tên
+            fullNameField.value = cells[3].textContent.trim(); // Họ và tên
+            phoneNumberField.value = cells[4].textContent.trim(); // Số điện thoại
+            roleField.value = cells[5].textContent.trim() === "Quản trị viên" ? "ADMIN" : "USER"; // Vai trò
+            branchField.value = cells[1].textContent.trim() === "TP.Hà Nội" ? "tp_hanoi" :
+                cells[1].textContent.trim() === "TP.Hồ Chí Minh" ? "tp_hcm" : "tp_danang"; // Chi nhánh
+
+            // Hiển thị modal
+            updateModal.style.display = "flex";
+        });
+    });
+
+    // Đóng modal khi nhấn "Thoát" hoặc "X"
+    closeModalButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            updateModal.style.display = "none";
+        });
+    });
+
+
+
+    // Xử lý gửi dữ liệu cập nhật (Submit)
+    const updateForm = document.getElementById("updateAccountForm");
+    updateForm.addEventListener("submit", (event) => {
+        event.preventDefault(); // Ngăn form gửi đi
+        alert("Thông tin tài khoản đã được cập nhật thành công!");
+        updateModal.style.display = "none"; // Đóng modal sau khi cập nhật
     });
 });
 
-
-// Đóng modal khi click vào nút "Thoát" hoặc "X" (nút đóng)
-function closeUpdateModal() {
-    document.getElementById('updateAccountModal').style.display = 'none';
-}
-// Đóng modal khi click vào nút "Thoát" hoặc "X"
-document.querySelector('.close').addEventListener('click', function () {
-    document.getElementById('updateAccountModal').style.display = 'none';
-});
-document.querySelector('.close-button').addEventListener('click', function () {
-    document.getElementById('updateAccountModal').style.display = 'none';
-});
